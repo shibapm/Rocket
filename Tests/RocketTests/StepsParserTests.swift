@@ -33,7 +33,7 @@ final class StepsParserTests: XCTestCase {
         
         let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: self.logger)
         
-        expect(steps[0]).to(beAKindOf(ScriptExecutor.self))
+        expect((steps[0] as! ScriptExecutor).parameters.content) == "swiftlint"
         expect(steps[1]).to(beAKindOf(TagExecutor.self))
         expect(steps[2]).to(beAKindOf(CommitExecutor.self))
         expect(steps[3]).to(beAKindOf(CommitExecutor.self))

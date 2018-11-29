@@ -9,6 +9,5 @@ import Logger
 
 struct FakePrinter: Printing {
     func print(_ message: String, terminator: String) {
-        
     }
 }

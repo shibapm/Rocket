@@ -1,7 +1,7 @@
 import Logger
 
 struct ScriptExecutor: StepExecutor {
-    private let parameters: ScriptParameters
+    let parameters: ScriptParameters
     private let scriptLauncher: ScriptLaunching
     
     init(dictionary: [String:Any]?, scriptLauncher: ScriptLaunching = ScriptLauncher()) {
