@@ -1,10 +1,3 @@
-//
-//  StepsParserTests.swift
-//  RocketTests
-//
-//  Created by Franco on 29/11/2018.
-//
-
 import XCTest
 @testable import RocketLib
 import Logger
@@ -35,8 +28,8 @@ final class StepsParserTests: XCTestCase {
         
         expect((steps[0] as! ScriptExecutor).parameters.content) == "swiftlint"
         expect(steps[1]).to(beAKindOf(TagExecutor.self))
-        expect(steps[2]).to(beAKindOf(CommitExecutor.self))
-        expect(steps[3]).to(beAKindOf(CommitExecutor.self))
+        expect((steps[2] as! CommitExecutor).parameters.message).to(beNil())
+        expect((steps[3] as! CommitExecutor).parameters.message) == "message"
         expect(steps[4]).to(beAKindOf(PushExecutor.self))
     }
     

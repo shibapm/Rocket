@@ -1,9 +1,9 @@
 import Logger
 import Foundation
 
-struct ScriptExecutor: StepExecutor {
+struct ScriptExecutor: StepExecutor, ScriptLauncherContainer {
     let parameters: ScriptParameters
-    private let scriptLauncher: ScriptLaunching
+    let scriptLauncher: ScriptLaunching
     
     init(dictionary: [String:Any]?, scriptLauncher: ScriptLaunching = ScriptLauncher()) {
         parameters = ScriptParameters(dictionary: dictionary)
@@ -17,10 +17,6 @@ struct ScriptExecutor: StepExecutor {
                 return
         }
         
-        do {
-            try scriptLauncher.launchScript(withContent: content)
-        } catch {
-            logger.logError("Script step with content: \"\(content)\" failed with error", error)
-        }
+        launchScript(content: content, errorMessage: "Script step with content: \"\(content)\" failed with error", logger: logger)
     }
 }

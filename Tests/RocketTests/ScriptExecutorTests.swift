@@ -1,23 +1,10 @@
-
 import XCTest
 @testable import RocketLib
 import Logger
 import Nimble
 import TestSpy
 
-final class ScriptExecutorTests: XCTestCase {
-    var scriptLauncher: SpyScriptLauncher!
-    
-    override func setUp() {
-        super.setUp()
-        scriptLauncher = SpyScriptLauncher()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-        scriptLauncher = nil
-    }
-    
+final class ScriptExecutorTests: ExecutorTestCase {
     func testItSendsTheCorrectScriptToTheScriptLauncher() {
         let testContent = "test"
         executeStep(withDictionary: ["content": testContent])

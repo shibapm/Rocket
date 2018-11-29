@@ -10,7 +10,7 @@ public enum Step: String {
         case .script:
             return ScriptExecutor(dictionary: dictionary)
         case .commit:
-            return CommitExecutor()
+            return CommitExecutor(dictionary: dictionary)
         case .tag:
             return TagExecutor()
         case .push:
