@@ -8,7 +8,7 @@ public enum Step: String {
     func executor(dictionary: [String:Any]?) -> StepExecutor {
         switch self {
         case .script:
-            return ScriptExecutor()
+            return ScriptExecutor(dictionary: dictionary)
         case .commit:
             return CommitExecutor()
         case .tag:

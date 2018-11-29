@@ -1,5 +1,7 @@
+import Logger
 
 struct TagExecutor: StepExecutor {
-//    func executeStep() {
-//    }
+    func executeStep(logger: Logger) {
+        
+    }
 }

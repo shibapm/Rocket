@@ -1,5 +1,7 @@
+import Logger
 
 struct CommitExecutor: StepExecutor {
-    func executeStep() {
+    func executeStep(logger: Logger) {
+        
     }
 }

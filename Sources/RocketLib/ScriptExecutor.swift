@@ -1,11 +1,10 @@
-import ShellOut
 import Logger
 
 struct ScriptExecutor: StepExecutor {
     private let parameters: ScriptParameters
     private let scriptLauncher: ScriptLaunching
     
-    init(dictionary: [String:Any], scriptLauncher: ScriptLaunching = ScriptLauncher()) {
+    init(dictionary: [String:Any]?, scriptLauncher: ScriptLaunching = ScriptLauncher()) {
         parameters = ScriptParameters(dictionary: dictionary)
         self.scriptLauncher = scriptLauncher
     }
@@ -22,15 +21,5 @@ struct ScriptExecutor: StepExecutor {
         } catch {
             logger.logError(error)
         }
-    }
-}
-
-protocol ScriptLaunching {
-    func launchScript(withContent content: String) throws
-}
-
-struct ScriptLauncher: ScriptLaunching {
-    func launchScript(withContent content: String) throws {
-        try shellOut(to: content)
     }
 }

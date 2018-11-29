@@ -6,7 +6,7 @@ struct ScriptParameters {
         case content
     }
     
-    init(dictionary: [String:Any]) {
-        self.content = dictionary[CodingKeys.content]
+    init(dictionary: [String:Any]?) {
+        self.content = dictionary?[CodingKeys.content]
     }
 }

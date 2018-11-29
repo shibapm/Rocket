@@ -1,5 +1,6 @@
+import Logger
 
 struct PushExecutor: StepExecutor {
-//    func executeStep() {
-//    }
+    func executeStep(logger: Logger) {
+    }
 }

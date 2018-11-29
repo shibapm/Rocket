@@ -13,4 +13,4 @@ guard let loadedDictionary = try Yams.load(yaml: string) as? [String: Any] else 
 
 let stepExecutors = StepsParser.parseSteps(fromDictionary: loadedDictionary, logger: logger)
 
-stepExecutors.forEach { $0.executeStep() }
+stepExecutors.forEach { $0.executeStep(logger: logger) }
