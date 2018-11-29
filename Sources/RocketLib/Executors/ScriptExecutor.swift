@@ -9,11 +9,11 @@ struct ScriptExecutor: StepExecutor {
         self.scriptLauncher = scriptLauncher
     }
     
-    func executeStep(logger: Logger) {
+    func executeStep(version: String, logger: Logger) {
         guard let content = parameters.content,
             !content.isEmpty else {
-            logger.logError("Invalid script content")
-            return
+                logger.logError("Invalid script content")
+                return
         }
         
         do {

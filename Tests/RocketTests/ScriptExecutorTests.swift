@@ -44,6 +44,6 @@ final class ScriptExecutorTests: XCTestCase {
 
     private func executeStep(withDictionary dictionary: [String:Any]?) {
         let scriptExecutor = givenAScriptExecutor(dictionary: dictionary)
-        scriptExecutor.executeStep(logger: Logger.testLogger)
+        scriptExecutor.executeStep(version: "1.0.0", logger: Logger.testLogger)
     }
 }
