@@ -15,7 +15,7 @@ final class StepsParserTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        logger = Logger(printer: FakePrinter())
+        logger = Logger.testLogger
     }
     
     override func tearDown() {

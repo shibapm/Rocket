@@ -17,6 +17,7 @@ let package = Package(
         .package(url: "https://github.com/f-meloni/Logger", from: "0.1.0"),
         .package(url: "https://github.com/Quick/Nimble", from: "7.3.1"),
         .package(url: "https://github.com/JohnSundell/ShellOut.git", from: "2.1.0"),
+        .package(url: "https://github.com/f-meloni/TestSpy", from: "0.3.1")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -29,6 +30,6 @@ let package = Package(
             dependencies: ["Yams", "Logger", "RocketLib"]),
         .testTarget(
             name: "RocketTests",
-            dependencies: ["RocketLib", "Nimble"]),
+            dependencies: ["RocketLib", "Nimble", "TestSpy"]),
     ]
 )
