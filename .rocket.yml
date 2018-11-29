@@ -1,0 +1,12 @@
+
+---
+steps: 
+  - 
+    script: 
+      content: swiftlint
+  - tag
+  - 
+    script: 
+      content: Scripts/Script.sh
+  - commit
+  - push
