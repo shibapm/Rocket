@@ -1,4 +1,5 @@
 import Logger
+import Foundation
 
 struct ScriptExecutor: StepExecutor {
     let parameters: ScriptParameters
@@ -19,7 +20,7 @@ struct ScriptExecutor: StepExecutor {
         do {
             try scriptLauncher.launchScript(withContent: content)
         } catch {
-            logger.logError(error)
+            logger.logError("Script step with content: \"\(content)\" failed with error", error)
         }
     }
 }
