@@ -2,8 +2,8 @@ import Yams
 import Foundation
 import Logger
 import RocketLib
+import PackageConfig
 
-let string = try String(contentsOfFile: ".rocket.yml")
 let logger = Logger()
 
 guard CommandLine.arguments.count > 1 else {
@@ -13,13 +13,23 @@ guard CommandLine.arguments.count > 1 else {
 
 let version = CommandLine.arguments[1]
 
-guard let loadedDictionary = try Yams.load(yaml: string) as? [String: Any] else {
-    logger.logError("Invalid YAML")
-    exit(1)
+var stepsDictionary: [String:Any]!
+
+let rocketYamlPath = ".rocket.yml"
+if FileManager.default.fileExists(atPath: rocketYamlPath) {
+    let string = try String(contentsOfFile: rocketYamlPath)
+    guard let loadedDictionary = try Yams.load(yaml: string) as? [String: Any] else {
+        logger.logError("Invalid YAML")
+        exit(1)
+    }
+    
+    stepsDictionary = loadedDictionary
+} else if let rocketConfig = getPackageConfig()["rocket"] as? [String:Any] {
+    stepsDictionary = rocketConfig
 }
 
 let versionExporter = VersionExporter()
 versionExporter.exportVersion(version)
 
-let stepExecutors = StepsParser.parseSteps(fromDictionary: loadedDictionary, logger: logger)
+let stepExecutors = StepsParser.parseSteps(fromDictionary: stepsDictionary, logger: logger)
 stepExecutors.forEach { $0.executeStep(version: version, logger: logger) }

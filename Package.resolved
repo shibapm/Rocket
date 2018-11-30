@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "PackageConfig",
+        "repositoryURL": "https://github.com/orta/PackageConfig.git",
+        "state": {
+          "branch": null,
+          "revision": "5aa8c836b577b3312e5bee6ff15c61cd7d649804",
+          "version": "0.0.1"
+        }
+      },
+      {
         "package": "Quick",
         "repositoryURL": "https://github.com/Quick/Quick",
         "state": {
