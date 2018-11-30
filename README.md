@@ -84,12 +84,8 @@ Pushes the current changes
 
 ## Next steps
 
-[ ] Show the scripts output on the stdout
-
-[ ] Add a step to execute script files written in swift
-
-[ ] Add a step to execute ruby code
-
-[ ] Add a step to comment the dev dependencies on the `Package.swift`
-
-[ ] Add a step to create Github releases
+- [ ] Show the scripts output on the stdout
+- [ ] Add a step to execute script files written in swift
+- [ ] Add a step to execute ruby code
+- [ ] Add a step to comment the dev dependencies on the `Package.swift`
+- [ ] Add a step to create Github releases
