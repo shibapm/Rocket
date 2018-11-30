@@ -12,17 +12,10 @@ final class GitAddExecutorTests: ScriptLauncherTestCase {
         expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git add a b c")))
     }
     
-    func testItDoesntSendAnyCommandToTheScriptLauncherIfThePathsAreEmpty() {
-        let testContent: [String] = []
-        executeStep(withDictionary: ["content": testContent])
-        
-        expect(self.scriptLauncher).to(beEmpty())
-    }
-    
     func testItDoesntSendAnyCommandToTheScriptLauncherIfTheDictionaryIsNil() {
         executeStep(withDictionary: nil)
         
-        expect(self.scriptLauncher).to(beEmpty())
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git add .")))
     }
     
     private func givenAGitAddExecutor(dictionary: [String:Any]?) -> GitAddExecutor {

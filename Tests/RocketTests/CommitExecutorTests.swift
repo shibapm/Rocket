@@ -12,13 +12,13 @@ final class CommitExecutorTests: ScriptLauncherTestCase {
         
         executeCommitStep(withDictionary: dictionary)
         
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: ShellOutCommand.gitCommit(message: testMessage).string)))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git commit -m \"\(testMessage)\"")))
     }
     
     func testItUsesTheStandardCommitMessageIfNoMessageIsProvided() {
         executeCommitStep(withDictionary: nil)
         
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: ShellOutCommand.gitCommit(message: "Version 1.0.0").string)))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git commit -m \"Version 1.0.0\"")))
     }
     
     private func givenACommitExecutor(dictionary: [String:Any]?) -> CommitExecutor {
