@@ -1,6 +1,6 @@
 # Rocket 🚀
 
-Swift CLI release tool for Git repos and swift 
+Swift CLI release tool for Git repos and Swift Packages
 
 ## Installation
 You can install Rocket with SPM
