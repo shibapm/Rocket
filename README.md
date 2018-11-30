@@ -20,9 +20,10 @@ steps:
   - script: 
       content: ruby Scripts/update_changelog.rb
   - git_add:
-        paths:
-            - CHANGELOG.md
-  - commit
+      paths:
+        - CHANGELOG.md
+  - commit:
+      message: "Releasing version $VERSION"
   - tag
   - push
 ```
@@ -39,7 +40,7 @@ With PackageConfig (https://github.com/orta/PackageConfig) you can just put the 
             [
                 ["script": ["content": "ruby Scripts/update_changelog.rb"]]
                 ["git_add": ["paths": ["CHANGELOG.md"]]],
-                "commit",
+                ["commit": ["message": "Releasing version $VERSION"]],
                 "tag",
                 "push"
             ]
