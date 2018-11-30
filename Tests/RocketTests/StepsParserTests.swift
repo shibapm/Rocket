@@ -18,19 +18,24 @@ final class StepsParserTests: XCTestCase {
     
     func testItParsesCorrectlyAValidDictionary() {
         let dictionary = ["steps":
-            [["script": ["content": "swiftlint"]],
-             "tag",
-             "commit",
-             ["commit": ["message": "message"]],
-             ["push": ["remote": "testRemote", "branch": "testBranch"]]]]
+            [
+                ["script": ["content": "swiftlint"]],
+                "tag",
+                ["git_add": ["paths": ["a", "b"]]],
+                "commit",
+                ["commit": ["message": "message"]],
+                ["push": ["remote": "testRemote", "branch": "testBranch"]]
+            ]
+        ]
         
         let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: self.logger)
         
         expect((steps[0] as! ScriptExecutor).parameters.content) == "swiftlint"
         expect(steps[1]).to(beAKindOf(TagExecutor.self))
-        expect((steps[2] as! CommitExecutor).parameters.message).to(beNil())
-        expect((steps[3] as! CommitExecutor).parameters.message) == "message"
-        expect((steps[4] as! PushExecutor).parameters) == PushParameters(dictionary: ["remote": "testRemote", "branch": "testBranch"])
+        expect((steps[2] as! GitAddExecutor).parameters.paths) == ["a", "b"]
+        expect((steps[3] as! CommitExecutor).parameters.message).to(beNil())
+        expect((steps[4] as! CommitExecutor).parameters.message) == "message"
+        expect((steps[5] as! PushExecutor).parameters) == PushParameters(dictionary: ["remote": "testRemote", "branch": "testBranch"])
     }
     
     func testItIgnoresTheInvalidSteps() {
