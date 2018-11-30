@@ -1,6 +1,4 @@
 
 struct TagParameters: StepParameters {
-    init(dictionary: [String : Any]?) {
-        
-    }
+    init(dictionary: [String : Any]?) {}
 }
