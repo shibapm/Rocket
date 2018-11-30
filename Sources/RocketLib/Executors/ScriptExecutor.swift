@@ -5,7 +5,7 @@ struct ScriptExecutor: StepExecutor, ScriptLauncherContainer {
     let parameters: ScriptParameters
     let scriptLauncher: ScriptLaunching
     
-    init(dictionary: [String:Any]?, scriptLauncher: ScriptLaunching = ScriptLauncher()) {
+    init(dictionary: [String:Any]?, scriptLauncher: ScriptLaunching = ScriptLauncher.shared) {
         parameters = ScriptParameters(dictionary: dictionary)
         self.scriptLauncher = scriptLauncher
     }

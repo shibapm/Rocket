@@ -1,13 +1,13 @@
 import Logger
 
 public final class VersionExporter {
-    var scriptLauncher: ScriptLauncher
+    var scriptLauncher: ScriptLaunching
     
     public convenience init() {
         self.init(scriptLauncher: ScriptLauncher.shared)
     }
     
-    init(scriptLauncher: ScriptLauncher) {
+    init(scriptLauncher: ScriptLaunching) {
         self.scriptLauncher = scriptLauncher
     }
     

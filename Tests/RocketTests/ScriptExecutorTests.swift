@@ -4,7 +4,7 @@ import Logger
 import Nimble
 import TestSpy
 
-final class ScriptExecutorTests: ExecutorTestCase {
+final class ScriptExecutorTests: LauncherTestCase {
     func testItSendsTheCorrectScriptToTheScriptLauncher() {
         let testContent = "test"
         executeStep(withDictionary: ["content": testContent])
