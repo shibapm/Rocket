@@ -3,10 +3,7 @@
 steps: 
   - 
     script: 
-      content: swiftlint
-  - tag
-  - 
-    script: 
-      content: Scripts/Script.sh
+      content: echo "releasing $VERSION"
   - commit
+  - tag
   - push
