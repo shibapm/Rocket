@@ -51,33 +51,45 @@ With PackageConfig (https://github.com/orta/PackageConfig) you can just put the 
 
 ### script
 Runs a command line script
-*Parameters:*
-*content*: String (required): the script content
+
+**Parameters:**
+
+**content**: `String` (required): the script content
 
 ### git_add
 Adds the files to the git's staging area
-*Parameters:*
-*paths*: [String] (optional): The paths you want to add to the staging area - default: "[.]"
+
+**Parameters:**
+
+**paths**: `[String]` (optional): The paths you want to add to the staging area - **default**: `[.]`
 
 ### commit
 Commits on git
-*Parameters:*
-*message*: String (optional): The commit message - default: "Version $VERSION"
+
+**Parameters:**
+
+**message**: `String` (optional): The commit message - **default**: `"Version $VERSION"`
 
 ### tag
 Tags the current version
 
 ### push
 Pushes the current changes
-*Parameters:*
-*remote*: String (optional): The name of the remote you want to push to - default: "origin"
-*branch*: String (optional): The name of the branch you want to push - default: "master"
+
+**Parameters:**
+
+**remote**: `String` (optional): The name of the remote you want to push to - **default**: `"origin"`
+
+**branch**: `String` (optional): The name of the branch you want to push - **default**: `"master"`
 
 ## Next steps
 
 [ ] Show the scripts output on the stdout
-[ ] Add a step to execute script files written in swift
-[ ] Add a step to execute ruby code
-[ ] Add a step to comment the dev dependencies on the `Package.swift`
-[ ] Add a step to create Github releases
 
+[ ] Add a step to execute script files written in swift
+
+[ ] Add a step to execute ruby code
+
+[ ] Add a step to comment the dev dependencies on the `Package.swift`
+
+[ ] Add a step to create Github releases
