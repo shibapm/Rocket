@@ -14,7 +14,7 @@ public enum Step: String {
         case .tag:
             return TagExecutor()
         case .push:
-            return PushExecutor()
+            return PushExecutor(dictionary: dictionary)
         }
     }
 }

@@ -1,6 +1,6 @@
 import XCTest
 
-class LauncherTestCase: XCTestCase {
+class ScriptLauncherTestCase: XCTestCase {
     var scriptLauncher: SpyScriptLauncher!
     
     override func setUp() {

@@ -5,7 +5,7 @@ import Nimble
 import TestSpy
 import ShellOut
 
-final class CommitExecutorTests: LauncherTestCase {
+final class CommitExecutorTests: ScriptLauncherTestCase {
     func testItUsesTheCommitMessageIfAny() {
         let testMessage = "test"
         let dictionary = ["message": testMessage]
