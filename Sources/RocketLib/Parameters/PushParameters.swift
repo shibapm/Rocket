@@ -1,7 +1,7 @@
 
 struct PushParameters: StepParameters {
-    let remote: String?
-    let branch: String?
+    let remote: String
+    let branch: String
     
     enum CodingKeys: String {
         case remote
@@ -9,7 +9,7 @@ struct PushParameters: StepParameters {
     }
     
     init(dictionary: [String:Any]?) {
-        self.remote = dictionary?[CodingKeys.remote]
-        self.branch = dictionary?[CodingKeys.branch]
+        self.remote = dictionary?[CodingKeys.remote] ?? "origin"
+        self.branch = dictionary?[CodingKeys.branch] ?? "master"
     }
 }
