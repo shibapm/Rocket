@@ -82,7 +82,7 @@ Pushes the current changes
 
 **branch**: `String` (optional): The name of the branch you want to push - **default**: `"master"`
 
-## Get the current version
+## $VERSION
 
 You can use the variable `$VERSION` to refer to the version you are releasing
 
