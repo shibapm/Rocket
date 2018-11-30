@@ -1,5 +1,5 @@
 
-struct CommitParameters {
+struct CommitParameters: StepParameters {
     let message: String?
     
     enum CodingKeys: String {

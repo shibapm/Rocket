@@ -6,15 +6,19 @@ public enum Step: String {
     case push
     
     func executor(dictionary: [String:Any]?) -> StepExecutor {
+        return executorType.init(dictionary: dictionary)
+    }
+    
+    private var executorType: StepExecutor.Type {
         switch self {
         case .script:
-            return ScriptExecutor(dictionary: dictionary)
+            return ScriptExecutor.self
         case .commit:
-            return CommitExecutor(dictionary: dictionary)
+            return CommitExecutor.self
         case .tag:
-            return TagExecutor()
+            return TagExecutor.self
         case .push:
-            return PushExecutor(dictionary: dictionary)
+            return PushExecutor.self
         }
     }
 }

@@ -22,7 +22,7 @@ final class StepsParserTests: XCTestCase {
              "tag",
              "commit",
              ["commit": ["message": "message"]],
-             "push"]]
+             ["push": ["remote": "testRemote", "branch": "testBranch"]]]]
         
         let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: self.logger)
         
@@ -30,7 +30,7 @@ final class StepsParserTests: XCTestCase {
         expect(steps[1]).to(beAKindOf(TagExecutor.self))
         expect((steps[2] as! CommitExecutor).parameters.message).to(beNil())
         expect((steps[3] as! CommitExecutor).parameters.message) == "message"
-        expect(steps[4]).to(beAKindOf(PushExecutor.self))
+        expect((steps[4] as! PushExecutor).parameters) == PushParameters(dictionary: ["remote": "testRemote", "branch": "testBranch"])
     }
     
     func testItIgnoresTheInvalidSteps() {
@@ -47,5 +47,12 @@ final class StepsParserTests: XCTestCase {
         expect(steps[1]).to(beAKindOf(TagExecutor.self))
         expect(steps[2]).to(beAKindOf(CommitExecutor.self))
         expect(steps[3]).to(beAKindOf(PushExecutor.self))
+    }
+}
+
+extension PushParameters: Equatable {
+    public static func == (lhs: PushParameters, rhs: PushParameters) -> Bool {
+        return lhs.branch == rhs.branch &&
+            lhs.remote == rhs.remote
     }
 }

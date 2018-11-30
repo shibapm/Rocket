@@ -1,5 +1,5 @@
 
-struct PushParameters {
+struct PushParameters: StepParameters {
     let remote: String?
     let branch: String?
     

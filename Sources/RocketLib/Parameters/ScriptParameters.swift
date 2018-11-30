@@ -1,5 +1,5 @@
 
-struct ScriptParameters {
+struct ScriptParameters: StepParameters {
     let content: String?
     
     enum CodingKeys: String {
