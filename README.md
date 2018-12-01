@@ -1,6 +1,6 @@
 # Rocket 🚀
 
-Swift CLI release tool for Git repos and swift 
+Swift CLI release tool for Git repos and Swift Packages
 
 ## Installation
 You can install Rocket with SPM
@@ -83,9 +83,9 @@ Pushes the current changes
 
 **branch**: `String` (optional): The name of the branch you want to push - **default**: `"master"`
 
-## $VERSION
+## Variable $VERSION
 
-You can use the variable `$VERSION` to refer to the version you are releasing
+You can use the variable `$VERSION` inside the steps to refer to the version you are releasing
 
 ## Next steps
 
