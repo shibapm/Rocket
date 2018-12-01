@@ -1,0 +1,52 @@
+
+struct DevDependenciesModifier {
+    private let commentString = "//"
+    
+    func hideDependencies(packagePath: String) throws {
+        try modifyDevDependencies(packagePath: packagePath, action: .hide)
+    }
+    
+    func unhideDependencies(packagePath: String) throws {
+        try modifyDevDependencies(packagePath: packagePath, action: .unhide)
+    }
+    
+    private enum Action {
+        case hide
+        case unhide
+    }
+    
+    private func modifyDevDependencies(packagePath: String, action: Action) throws {
+        let packageContent = try String(contentsOfFile: packagePath)
+        let lines = packageContent.components(separatedBy: .newlines)
+
+        var result = packageContent
+        
+        lines.forEach { line in
+            if isDevDependencyLine(line: line) {
+                switch action {
+                case .hide:
+                    result = result.replacingOccurrences(of: line, with: hideDependencyOnLine(line))
+                case .unhide:
+                    if line.hasPrefix(commentString) {
+                        result = result.replacingOccurrences(of: line, with: unhideDependencyOnLine(line))
+                    }
+                }
+            }
+        }
+        
+        try result.write(toFile: packagePath, atomically: true, encoding: .utf8)
+    }
+    
+    private func hideDependencyOnLine(_ line: String) -> String {
+        return commentString + line
+    }
+    
+    private func unhideDependencyOnLine(_ line: String) -> String {
+        let devDependencyStartIndex = String.Index(encodedOffset: 2)
+        return String(line[devDependencyStartIndex..<line.endIndex])
+    }
+    
+    private func isDevDependencyLine(line: String) -> Bool {
+        return line.contains("// dev") || line.contains("//dev")
+    }
+}
