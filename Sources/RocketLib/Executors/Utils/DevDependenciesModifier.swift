@@ -1,6 +1,16 @@
 
-struct DevDependenciesModifier {
+protocol DevDependenciesModifing {
+    func hideDependencies(packagePath: String) throws
+    func unhideDependencies(packagePath: String) throws
+}
+
+struct DevDependenciesModifier: DevDependenciesModifing {
     private let commentString = "//"
+    
+    private enum Action {
+        case hide
+        case unhide
+    }
     
     func hideDependencies(packagePath: String) throws {
         try modifyDevDependencies(packagePath: packagePath, action: .hide)
@@ -8,11 +18,6 @@ struct DevDependenciesModifier {
     
     func unhideDependencies(packagePath: String) throws {
         try modifyDevDependencies(packagePath: packagePath, action: .unhide)
-    }
-    
-    private enum Action {
-        case hide
-        case unhide
     }
     
     private func modifyDevDependencies(packagePath: String, action: Action) throws {
