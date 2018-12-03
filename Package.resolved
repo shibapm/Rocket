@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Komondor",
+        "repositoryURL": "https://github.com/orta/Komondor.git",
+        "state": {
+          "branch": null,
+          "revision": "e48fb2186f642885254277038508f5f2c7d96eb3",
+          "version": "1.0.1"
+        }
+      },
+      {
         "package": "Logger",
         "repositoryURL": "https://github.com/f-meloni/Logger",
         "state": {
@@ -44,6 +53,15 @@
           "branch": null,
           "revision": "f1c253a34a40df4bfd268b09fdb101b059f6d52d",
           "version": "2.1.0"
+        }
+      },
+      {
+        "package": "SwiftFormat",
+        "repositoryURL": "https://github.com/nicklockwood/SwiftFormat.git",
+        "state": {
+          "branch": null,
+          "revision": "7a944b895c494c18d540d3ddbdcb8adee6490cda",
+          "version": "0.35.9"
         }
       },
       {
