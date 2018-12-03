@@ -26,6 +26,8 @@ if FileManager.default.fileExists(atPath: rocketYamlPath) {
     stepsDictionary = loadedDictionary
 } else if let rocketConfig = getPackageConfig()["rocket"] as? [String: Any] {
     stepsDictionary = rocketConfig
+} else {
+    logger.logError("Steps not found")
 }
 
 let versionExporter = VersionExporter()
