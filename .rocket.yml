@@ -8,6 +8,7 @@ steps:
         - Package.swift
   - commit:
       no_verify: true
+  - tag
   - unhide_dev_dependencies
   - git_add:
       paths:
@@ -15,5 +16,4 @@ steps:
   - commit:
       message: Unhide dev dependencies
       no_verify: true
-  - tag
   - push
