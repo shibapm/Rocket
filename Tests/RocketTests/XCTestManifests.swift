@@ -33,6 +33,7 @@ extension HideDevDependenciesExecutorTests {
 extension PushExecutorTests {
     static let __allTests = [
         ("testItSendsTheCorrectScriptContent", testItSendsTheCorrectScriptContent),
+        ("testItSendsTheNoVerifyParameterIfRequired", testItSendsTheNoVerifyParameterIfRequired),
         ("testItUsesAWorkaroundToGenerateTheTestsOnLinux", testItUsesAWorkaroundToGenerateTheTestsOnLinux),
     ]
 }

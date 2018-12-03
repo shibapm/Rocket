@@ -16,4 +16,13 @@ final class PushExecutorTests: ScriptLauncherTestCase {
 
         expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git push \(testRemote) \(testBranch) --tags")))
     }
+
+    func testItSendsTheNoVerifyParameterIfRequired() {
+        let dictionary = ["no_verify": true]
+
+        let executor = PushExecutor(dictionary: dictionary, scriptLauncher: scriptLauncher)
+        executor.executeStep(version: "1.0.0", logger: Logger.testLogger)
+
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git push origin master --tags --no-verify")))
+    }
 }
