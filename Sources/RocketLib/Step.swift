@@ -5,6 +5,8 @@ public enum Step: String {
     case tag
     case push
     case gitAdd = "git_add"
+    case hideDependencies = "hide_dependencies"
+    case unhideDependencies = "unhide_dependencies"
     
     func executor(dictionary: [String:Any]?) -> StepExecutor {
         return executorType.init(dictionary: dictionary)
@@ -22,6 +24,10 @@ public enum Step: String {
             return PushExecutor.self
         case .gitAdd:
             return GitAddExecutor.self
+        case .unhideDependencies:
+            return UnhideDevDependenciesExecutor.self
+        case .hideDependencies:
+            return HideDevDependenciesExecutor.self
         }
     }
 }
