@@ -1,4 +1,3 @@
-
 ---
 steps: 
   - script: 
@@ -17,3 +16,4 @@ steps:
       message: Unhide dev dependencies
       no_verify: true
   - tag
+  - push
