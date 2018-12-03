@@ -83,7 +83,6 @@ extension VersionExporterTests {
             testCase(HideDevDependenciesExecutorTests.__allTests),
             testCase(PushExecutorTests.__allTests),
             testCase(ScriptExecutorTests.__allTests),
-            testCase(ScriptLauncherTestCase.__allTests),
             testCase(StepsParserTests.__allTests),
             testCase(TagExecutorTests.__allTests),
             testCase(UnhideDevDependenciesExecutorTests.__allTests),
