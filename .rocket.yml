@@ -1,9 +1,19 @@
 
 ---
 steps: 
-  - 
-    script: 
+  - script: 
       content: echo "releasing $VERSION"
-  - commit
+  - hide_dev_dependencies
+  - git_add:
+      paths:
+        - Package.swift
+  - commit:
+      no_verify: true
+  - unhide_dev_dependencies
+  - git_add:
+      paths:
+        - Package.swift
+  - commit:
+      message: Unhide dev dependencies
+      no_verify: true
   - tag
-  - push
