@@ -12,9 +12,7 @@ class ScriptLauncherTestCase: XCTestCase {
         super.tearDown()
         scriptLauncher = nil
     }
-    
+
     // workaround to make the swift test --generate-linuxmain work
-    func testItUsesAWorkaroundToGenerateTheTestsOnLinux() {
-        
-    }
+    func testItUsesAWorkaroundToGenerateTheTestsOnLinux() {}
 }

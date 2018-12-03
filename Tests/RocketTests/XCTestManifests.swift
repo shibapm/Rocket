@@ -46,12 +46,6 @@ extension ScriptExecutorTests {
     ]
 }
 
-extension ScriptLauncherTestCase {
-    static let __allTests = [
-        ("testItUsesAWorkaroundToGenerateTheTestsOnLinux", testItUsesAWorkaroundToGenerateTheTestsOnLinux),
-    ]
-}
-
 extension StepsParserTests {
     static let __allTests = [
         ("testItIgnoresTheInvalidSteps", testItIgnoresTheInvalidSteps),
@@ -81,19 +75,19 @@ extension VersionExporterTests {
 }
 
 #if !os(macOS)
-public func __allTests() -> [XCTestCaseEntry] {
-    return [
-        testCase(CommitExecutorTests.__allTests),
-        testCase(DevDependenciesModifierTests.__allTests),
-        testCase(GitAddExecutorTests.__allTests),
-        testCase(HideDevDependenciesExecutorTests.__allTests),
-        testCase(PushExecutorTests.__allTests),
-        testCase(ScriptExecutorTests.__allTests),
-        testCase(ScriptLauncherTestCase.__allTests),
-        testCase(StepsParserTests.__allTests),
-        testCase(TagExecutorTests.__allTests),
-        testCase(UnhideDevDependenciesExecutorTests.__allTests),
-        testCase(VersionExporterTests.__allTests),
-    ]
-}
+    public func __allTests() -> [XCTestCaseEntry] {
+        return [
+            testCase(CommitExecutorTests.__allTests),
+            testCase(DevDependenciesModifierTests.__allTests),
+            testCase(GitAddExecutorTests.__allTests),
+            testCase(HideDevDependenciesExecutorTests.__allTests),
+            testCase(PushExecutorTests.__allTests),
+            testCase(ScriptExecutorTests.__allTests),
+            testCase(ScriptLauncherTestCase.__allTests),
+            testCase(StepsParserTests.__allTests),
+            testCase(TagExecutorTests.__allTests),
+            testCase(UnhideDevDependenciesExecutorTests.__allTests),
+            testCase(VersionExporterTests.__allTests),
+        ]
+    }
 #endif
