@@ -1,3 +1,4 @@
+@testable import RocketLib
 import TestSpy
 
 final class SpyDevDependenciesModifier: DevDependenciesModifing, TestSpy {
