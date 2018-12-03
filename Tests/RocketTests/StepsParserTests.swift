@@ -24,7 +24,9 @@ final class StepsParserTests: XCTestCase {
                 ["git_add": ["paths": ["a", "b"]]],
                 "commit",
                 ["commit": ["message": "message"]],
-                ["push": ["remote": "testRemote", "branch": "testBranch"]]
+                ["push": ["remote": "testRemote", "branch": "testBranch"]],
+                ["hide_dev_dependencies": ["package_path": "testPackage.swift"]],
+                "unhide_dev_dependencies"
             ]
         ]
         
@@ -36,15 +38,20 @@ final class StepsParserTests: XCTestCase {
         expect((steps[3] as! CommitExecutor).parameters.message).to(beNil())
         expect((steps[4] as! CommitExecutor).parameters.message) == "message"
         expect((steps[5] as! PushExecutor).parameters) == PushParameters(dictionary: ["remote": "testRemote", "branch": "testBranch"])
+        expect((steps[6] as! HideDevDependenciesExecutor).parameters.packagePath) == "testPackage.swift"
+        expect((steps[7] as! UnhideDevDependenciesExecutor).parameters.packagePath) == "Package.swift"
     }
     
     func testItIgnoresTheInvalidSteps() {
         let dictionary = ["steps":
-            [["script": ["content": "swiftlint"]],
-             "tag",
-             "invalid",
-             ["commit": ["message": "message"]],
-             "push"]]
+            [
+                ["script": ["content": "swiftlint"]],
+                "tag",
+                "invalid",
+                ["commit": ["message": "message"]],
+                "push"
+            ]
+        ]
         
         let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: self.logger)
         
