@@ -71,6 +71,8 @@ Commits on git
 
 **message**: `String` (optional): The commit message - **default**: `"Version $VERSION"`
 
+**no_verify**: `Bool` (optional): bypasses the pre-commit and commit-msg hooks **default**: `false`
+
 ### tag
 Tags the current version
 
@@ -83,6 +85,20 @@ Pushes the current changes
 
 **branch**: `String` (optional): The name of the branch you want to push - **default**: `"master"`
 
+### hide_dev_dependencies
+Comment the dev dependencies on your `Package.swift` to avoid them to be shipped with your release
+
+**Parameters:**
+
+**package_path**: `String` (optional): The relative path to your `Package.swift` file - **default**: `"Package.swift"`
+
+### unhide_dev_dependencies
+Uncomment the dev dependencies on your `Package.swift` after you released.
+
+**Parameters:**
+
+**package_path**: `String` (optional): The relative path to your `Package.swift` file - **default**: `"Package.swift"`
+
 ## Variable $VERSION
 
 You can use the variable `$VERSION` inside the steps to refer to the version you are releasing
@@ -92,5 +108,5 @@ You can use the variable `$VERSION` inside the steps to refer to the version you
 - [ ] Show the scripts output on the stdout
 - [ ] Add a step to execute script files written in swift
 - [ ] Add a step to execute ruby code
-- [ ] Add a step to comment the dev dependencies on the `Package.swift`
+- [X] Add a step to comment the dev dependencies on the `Package.swift`
 - [ ] Add a step to create Github releases
