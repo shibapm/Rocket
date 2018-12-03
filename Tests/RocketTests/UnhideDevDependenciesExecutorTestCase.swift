@@ -4,7 +4,7 @@ import Logger
 import Nimble
 import TestSpy
 
-final class HideDevDependenciesExecutorTests: XCTestCase {
+final class UnhideDevDependenciesExecutorTests: XCTestCase {
     func testItSendsTheHideDependenciesCallToTheDevDependenciesModifier() {
         checkDevDependencyModifierReceived(dictionary: ["package_path": "testPackage.swift"], expectedPackagePath: "testPackage.swift")
     }
@@ -15,10 +15,10 @@ final class HideDevDependenciesExecutorTests: XCTestCase {
     
     func checkDevDependencyModifierReceived(dictionary: [String:Any]?, expectedPackagePath: String) {
         let devDependenciesModifier = SpyDevDependenciesModifier()
-        let executor = HideDevDependenciesExecutor(dictionary: dictionary)
+        let executor = UnhideDevDependenciesExecutor(dictionary: dictionary)
         executor.devDependenciesModifier = devDependenciesModifier
         executor.executeStep(version: "1.0.0", logger: Logger.testLogger)
         
-        expect(devDependenciesModifier).to(haveReceived(.hideDependencies(packagePath: expectedPackagePath)))
+        expect(devDependenciesModifier).to(haveReceived(.unhideDependencies(packagePath: expectedPackagePath)))
     }
 }
