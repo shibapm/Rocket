@@ -55,49 +55,56 @@ Runs a command line script
 
 **Parameters:**
 
-**content**: `String` (required): the script content
+_content_: `String` (required): the script content
+<br/><br/>
 
 ### git_add
 Adds the files to the git's staging area
 
 **Parameters:**
 
-**paths**: `[String]` (optional): The paths you want to add to the staging area - **default**: `[.]`
+_paths_: `[String]` (optional): The paths you want to add to the staging area - **default**: `[.]`
+<br/><br/>
 
 ### commit
 Commits on git
 
 **Parameters:**
 
-**message**: `String` (optional): The commit message - **default**: `"Version $VERSION"`
+_message_: `String` (optional): The commit message - **default**: `"Version $VERSION"`
 
-**no_verify**: `Bool` (optional): bypasses the pre-commit and commit-msg hooks **default**: `false`
+_no_verify_: `Bool` (optional): bypasses the pre-commit and commit-msg hooks **default**: `false`
+<br/><br/>
 
 ### tag
 Tags the current version
+<br/><br/>
 
 ### push
 Pushes the current changes
 
 **Parameters:**
 
-**remote**: `String` (optional): The name of the remote you want to push to - **default**: `"origin"`
+_remote_: `String` (optional): The name of the remote you want to push to - **default**: `"origin"`
 
-**branch**: `String` (optional): The name of the branch you want to push - **default**: `"master"`
+_branch_: `String` (optional): The name of the branch you want to push - **default**: `"master"`
+<br/><br/>
 
 ### hide_dev_dependencies
 Comment the dev dependencies on your `Package.swift` to avoid them to be shipped with your release
 
 **Parameters:**
 
-**package_path**: `String` (optional): The relative path to your `Package.swift` file - **default**: `"Package.swift"`
+_package_path_: `String` (optional): The relative path to your `Package.swift` file - **default**: `"Package.swift"`
+<br/><br/>
 
 ### unhide_dev_dependencies
 Uncomment the dev dependencies on your `Package.swift` after you released.
 
 **Parameters:**
 
-**package_path**: `String` (optional): The relative path to your `Package.swift` file - **default**: `"Package.swift"`
+_package_path_: `String` (optional): The relative path to your `Package.swift` file - **default**: `"Package.swift"`
+<br/><br/>
 
 ## Variable $VERSION
 
