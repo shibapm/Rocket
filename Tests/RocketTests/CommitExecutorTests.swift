@@ -6,13 +6,13 @@ import TestSpy
 import XCTest
 
 final class CommitExecutorTests: ScriptLauncherTestCase {
-    func testItUsesTheCommitMessageIfAny() {
+    func testItUsesTheParametersIfAny() {
         let testMessage = "test"
-        let dictionary = ["message": testMessage]
+        let dictionary: [String: Any] = ["message": testMessage, "no_verify": true]
 
         executeCommitStep(withDictionary: dictionary)
 
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git commit -m \"\(testMessage)\"")))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git commit -m \"\(testMessage)\" --no-verify")))
     }
 
     func testItUsesTheStandardCommitMessageIfNoMessageIsProvided() {

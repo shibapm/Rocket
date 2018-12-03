@@ -3,7 +3,12 @@ import Logger
 final class CommitExecutor: DefaultExecutor<CommitParameters> {
     override func executeStep(version: String, logger: Logger) {
         let message = parameters.message ?? "Version \(version)"
+        var scriptString = "git commit -m \"\(message)\""
 
-        launchScript(content: "git commit -m \"\(message)\"", errorMessage: "Commit step failed with error", logger: logger)
+        if parameters.noVerify {
+            scriptString += " --no-verify"
+        }
+
+        launchScript(content: scriptString, errorMessage: "Commit step failed with error", logger: logger)
     }
 }
