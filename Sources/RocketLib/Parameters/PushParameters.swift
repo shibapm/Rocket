@@ -2,14 +2,14 @@
 struct PushParameters: StepParameters {
     let remote: String
     let branch: String
-    
+
     enum CodingKeys: String {
         case remote
         case branch
     }
-    
-    init(dictionary: [String:Any]?) {
-        self.remote = dictionary?[CodingKeys.remote] ?? "origin"
-        self.branch = dictionary?[CodingKeys.branch] ?? "master"
+
+    init(dictionary: [String: Any]?) {
+        remote = dictionary?[CodingKeys.remote] ?? "origin"
+        branch = dictionary?[CodingKeys.branch] ?? "master"
     }
 }

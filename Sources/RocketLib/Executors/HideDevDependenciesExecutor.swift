@@ -2,8 +2,8 @@ import Logger
 
 final class HideDevDependenciesExecutor: DefaultExecutor<ModifyDevDependenciesParameters> {
     var devDependenciesModifier: DevDependenciesModifing = DevDependenciesModifier()
-    
-    override func executeStep(version: String, logger: Logger) {
+
+    override func executeStep(version _: String, logger: Logger) {
         do {
             try devDependenciesModifier.hideDependencies(packagePath: parameters.packagePath)
         } catch {

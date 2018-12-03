@@ -1,8 +1,8 @@
-import Yams
 import Foundation
 import Logger
-import RocketLib
 import PackageConfig
+import RocketLib
+import Yams
 
 let logger = Logger()
 
@@ -13,7 +13,7 @@ guard CommandLine.arguments.count > 1 else {
 
 let version = CommandLine.arguments[1]
 
-var stepsDictionary: [String:Any]!
+var stepsDictionary: [String: Any]!
 
 let rocketYamlPath = ".rocket.yml"
 if FileManager.default.fileExists(atPath: rocketYamlPath) {
@@ -22,9 +22,9 @@ if FileManager.default.fileExists(atPath: rocketYamlPath) {
         logger.logError("Invalid YAML")
         exit(1)
     }
-    
+
     stepsDictionary = loadedDictionary
-} else if let rocketConfig = getPackageConfig()["rocket"] as? [String:Any] {
+} else if let rocketConfig = getPackageConfig()["rocket"] as? [String: Any] {
     stepsDictionary = rocketConfig
 }
 

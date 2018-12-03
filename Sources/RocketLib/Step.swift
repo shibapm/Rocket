@@ -7,11 +7,11 @@ public enum Step: String {
     case gitAdd = "git_add"
     case hideDependencies = "hide_dev_dependencies"
     case unhideDependencies = "unhide_dev_dependencies"
-    
-    func executor(dictionary: [String:Any]?) -> StepExecutor {
+
+    func executor(dictionary: [String: Any]?) -> StepExecutor {
         return executorType.init(dictionary: dictionary)
     }
-    
+
     private var executorType: StepExecutor.Type {
         switch self {
         case .script:

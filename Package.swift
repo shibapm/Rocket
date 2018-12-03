@@ -9,7 +9,8 @@ let package = Package(
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .executable(
             name: "Rocket",
-            targets: ["Rocket"]),
+            targets: ["Rocket"]
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -28,25 +29,28 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "RocketLib",
-            dependencies: ["Logger", "ShellOut"]),
+            dependencies: ["Logger", "ShellOut"]
+        ),
         .target(
             name: "Rocket",
-            dependencies: ["Yams", "Logger", "PackageConfig", "RocketLib"]),
+            dependencies: ["Yams", "Logger", "PackageConfig", "RocketLib"]
+        ),
         .testTarget(
             name: "RocketTests",
-            dependencies: ["RocketLib", "Nimble", "TestSpy"]),
+            dependencies: ["RocketLib", "Nimble", "TestSpy"]
+        ),
     ]
 )
 
 #if canImport(PackageConfig)
-import PackageConfig
+    import PackageConfig
 
-let config = PackageConfig([
+    let config = PackageConfig([
         "komondor": [
             "pre-commit": [
                 "swift run swiftFormat .",
-                "git add ."
-            ]
-        ]
+                "git add .",
+            ],
+        ],
     ])
 #endif

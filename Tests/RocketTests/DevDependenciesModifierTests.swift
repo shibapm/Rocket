@@ -1,40 +1,40 @@
-import XCTest
-@testable import RocketLib
 import Nimble
+@testable import RocketLib
+import XCTest
 
 final class DevDependenciesModifierTests: XCTestCase {
     var devDependencyModifier: DevDependenciesModifier!
-    
+
     let testPath = "testPackage.swift"
-    
+
     override func setUp() {
         super.setUp()
         devDependencyModifier = DevDependenciesModifier()
     }
-    
+
     override func tearDown() {
         try? FileManager.default.removeItem(atPath: testPath)
         super.tearDown()
     }
-    
+
     func testItHidesTheDependenciesCorrectly() throws {
         try givenAPackage(content: devDependencyPackage)
         devDependencyModifier = DevDependenciesModifier()
         try devDependencyModifier.hideDependencies(packagePath: testPath)
         expect(try String(contentsOfFile: self.testPath)) == hiddenDevDependencyPackage
     }
-    
+
     func testItShowsTheDependenciesCorrectly() throws {
         try givenAPackage(content: hiddenDevDependencyPackage)
         devDependencyModifier = DevDependenciesModifier()
         try devDependencyModifier.unhideDependencies(packagePath: testPath)
         expect(try String(contentsOfFile: self.testPath)) == devDependencyPackage
     }
-    
+
     private func givenAPackage(content: String) throws {
         try content.write(toFile: testPath, atomically: false, encoding: .utf8)
     }
-    
+
     private var devDependencyPackage: String {
         return """
         // swift-tools-version:4.2
@@ -68,7 +68,7 @@ final class DevDependenciesModifierTests: XCTestCase {
         )
         """
     }
-    
+
     private var hiddenDevDependencyPackage: String {
         return """
         // swift-tools-version:4.2

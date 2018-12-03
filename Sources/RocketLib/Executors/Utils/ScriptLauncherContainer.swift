@@ -16,7 +16,7 @@ extension ScriptLauncherContainer {
             exit(1)
         }
     }
-    
+
     func launchScript(command: ShellOutCommand, errorMessage: String, logger: Logger) {
         launchScript(content: command.string, errorMessage: errorMessage, logger: logger)
     }

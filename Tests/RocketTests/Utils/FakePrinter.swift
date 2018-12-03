@@ -1,8 +1,7 @@
 import Logger
 
 struct FakePrinter: Printing {
-    func print(_ message: String, terminator: String) {
-    }
+    func print(_: String, terminator _: String) {}
 }
 
 extension Logger {
