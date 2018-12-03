@@ -48,7 +48,7 @@ let package = Package(
     let config = PackageConfig([
         "komondor": [
             "pre-commit": [
-                "swift run swiftFormat .",
+                "swift run swiftformat .",
                 "git add .",
             ],
         ],
