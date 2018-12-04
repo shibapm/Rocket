@@ -54,6 +54,13 @@ extension StepsParserTests {
     ]
 }
 
+extension SwiftScriptExecutorTests {
+    static let __allTests = [
+        ("testItCreatesTheCorrectProcess", testItCreatesTheCorrectProcess),
+        ("testItDoesntCreateTheProcessIfThereIsNoScriptPath", testItDoesntCreateTheProcessIfThereIsNoScriptPath),
+    ]
+}
+
 extension TagExecutorTests {
     static let __allTests = [
         ("testItSendsTheCorrectScriptToTheScriptLauncher", testItSendsTheCorrectScriptToTheScriptLauncher),
@@ -85,6 +92,7 @@ extension VersionExporterTests {
             testCase(PushExecutorTests.__allTests),
             testCase(ScriptExecutorTests.__allTests),
             testCase(StepsParserTests.__allTests),
+            testCase(SwiftScriptExecutorTests.__allTests),
             testCase(TagExecutorTests.__allTests),
             testCase(UnhideDevDependenciesExecutorTests.__allTests),
             testCase(VersionExporterTests.__allTests),
