@@ -5,7 +5,7 @@ import ShellOut
 protocol ScriptLaunching {
     var version: String { get set }
 
-    func launchScript(withContent content: String) throws -> String
+    func launchScript(withContent content: String) throws
 }
 
 final class ScriptLauncher: ScriptLaunching {
@@ -14,7 +14,17 @@ final class ScriptLauncher: ScriptLaunching {
 
     private init() {}
 
-    func launchScript(withContent content: String) throws -> String {
-        return try shellOut(to: ["export VERSION=\(version)", content])
+    func launchScript(withContent content: String) throws {
+        let handler = WorkaroundFileHandler()
+
+        try shellOut(to: ["export VERSION=\(version)", content], outputHandle: handler)
     }
+}
+
+final class WorkaroundFileHandler: FileHandle {
+    override func write(_ data: Data) {
+        FileHandle.standardOutput.write(data)
+    }
+
+    override func closeFile() {}
 }
