@@ -1,7 +1,7 @@
 import Logger
 
-final class PushExecutor: DefaultExecutor<PushParameters> {
-    override func executeStep(version _: String, logger: Logger) {
+final class PushExecutor: ScriptLauncherExecutor<PushParameters> {
+    func executeStep(version _: String, logger: Logger) {
         var scriptString = "git push \(parameters.remote) \(parameters.branch) --tags"
 
         if parameters.noVerify {
