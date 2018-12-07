@@ -106,6 +106,14 @@ Uncomment the dev dependencies on your `Package.swift` after you released.
 _package_path_: `String` (optional): The relative path to your `Package.swift` file - **default**: `"Package.swift"`
 <br/><br/>
 
+### swift_script
+Compile and run a script file written in swift
+
+**Parameters:**
+
+_script_path_: `String` (required): The relative path to the swift script
+<br/><br/>
+
 ## Variable $VERSION
 
 You can use the variable `$VERSION` inside the steps to refer to the version you are releasing
