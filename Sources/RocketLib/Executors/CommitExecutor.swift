@@ -1,7 +1,7 @@
 import Logger
 
 final class CommitExecutor: ScriptLauncherExecutor<CommitParameters> {
-    func executeStep(version: String, logger: Logger) {
+    override func executeStep(version: String, logger: Logger) {
         let message = parameters.message ?? "Version \(version)"
         var scriptString = "git commit -m \"\(message)\""
 

@@ -6,4 +6,8 @@ class DefaultExecutor<T: StepParameters>: StepExecutor {
     required init(dictionary: [String: Any]?) {
         parameters = T(dictionary: dictionary)
     }
+
+    func executeStep(version _: String, logger _: Logger) {
+        fatalError("Not implemented")
+    }
 }
