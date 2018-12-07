@@ -5,7 +5,7 @@ import ShellOut
 protocol ScriptLaunching {
     var version: String { get set }
 
-    func launchScript(withContent content: String) throws
+    func launchScript(withContent content: String) throws -> String
 }
 
 final class ScriptLauncher: ScriptLaunching {
@@ -14,7 +14,7 @@ final class ScriptLauncher: ScriptLaunching {
 
     private init() {}
 
-    func launchScript(withContent content: String) throws {
-        try shellOut(to: ["export VERSION=\(version)", content])
+    func launchScript(withContent content: String) throws -> String {
+        return try shellOut(to: ["export VERSION=\(version)", content])
     }
 }
