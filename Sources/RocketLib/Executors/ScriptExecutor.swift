@@ -2,7 +2,7 @@ import Foundation
 import Logger
 
 final class ScriptExecutor: ScriptLauncherExecutor<ScriptParameters> {
-    func executeStep(version _: String, logger: Logger) {
+    override func executeStep(version _: String, logger: Logger) {
         guard let content = parameters.content,
             !content.isEmpty else {
             logger.logError("Invalid script content")

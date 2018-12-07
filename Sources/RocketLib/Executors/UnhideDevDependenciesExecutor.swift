@@ -3,7 +3,7 @@ import Logger
 final class UnhideDevDependenciesExecutor: DefaultExecutor<ModifyDevDependenciesParameters> {
     var devDependenciesModifier: DevDependenciesModifing = DevDependenciesModifier()
 
-    func executeStep(version _: String, logger: Logger) {
+    override func executeStep(version _: String, logger: Logger) {
         do {
             try devDependenciesModifier.unhideDependencies(packagePath: parameters.packagePath)
         } catch {
