@@ -5,7 +5,7 @@ final class SwiftScriptExecutor: DefaultExecutor<SwiftScriptParameters> {
     lazy var fileManager: FileManager = .default
     lazy var processLauncher: ProcessLaunching = ProcessLauncher()
 
-    override func executeStep(version: String, logger: Logger) {
+    func executeStep(version: String, logger: Logger) {
         guard let scriptPath = parameters.scriptPath else {
             logger.logError("Invalid script path for the Swift script step")
             return

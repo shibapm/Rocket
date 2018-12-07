@@ -6,3 +6,7 @@ public protocol StepExecutor {
 
     init(dictionary: [String: Any]?)
 }
+
+extension StepExecutor {
+    func executeStep(version _: String, logger _: Logger) {}
+}
