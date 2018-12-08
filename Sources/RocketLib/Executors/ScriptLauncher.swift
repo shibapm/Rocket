@@ -15,9 +15,17 @@ final class ScriptLauncher: ScriptLaunching {
     private init() {}
 
     func launchScript(withContent content: String) throws {
-        let handler = WorkaroundFileHandler()
+        let handler = workaroundFileHandler()
 
         try shellOut(to: ["export VERSION=\(version)", content], outputHandle: handler)
+    }
+
+    private func workaroundFileHandler() -> WorkaroundFileHandler? {
+        #if os(Linux)
+            return WorkaroundFileHandler(fileDescriptor: FileHandle.standardOutput.fileDescriptor, closeOnDealloc: false)
+        #else
+            return WorkaroundFileHandler()
+        #endif
     }
 }
 
