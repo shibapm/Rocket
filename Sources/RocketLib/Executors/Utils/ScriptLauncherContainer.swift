@@ -9,7 +9,7 @@ protocol ScriptLauncherContainer {
 extension ScriptLauncherContainer {
     func launchScript(content: String, errorMessage: String, logger: Logger) {
         do {
-            try scriptLauncher.launchScript(withContent: content)
+            try scriptLauncher.launchScript(withContent: content, logger: logger)
         } catch {
             let shellError = error as! ShellOutError
             logger.logError(errorMessage, shellError.message)

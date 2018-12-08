@@ -1,3 +1,4 @@
+import Logger
 @testable import RocketLib
 import ShellOut
 import TestSpy
@@ -11,7 +12,7 @@ final class SpyScriptLauncher: ScriptLaunching, TestSpy {
 
     var callstack = CallstackContainer<Method>()
 
-    func launchScript(withContent content: String) throws {
+    func launchScript(withContent content: String, logger _: Logger) throws {
         callstack.record(.launchScript(content: content))
     }
 }
