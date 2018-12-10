@@ -5,7 +5,7 @@ matrix:
       osx_image: xcode10
       script:
         - swift test
-        - ./.build/x86_64-apple-macosx10.10/debug/rocket 1.0.0 .test.yml
+        - ./.build/x86_64-apple-macosx10.10/debug/rocket 1.0.0 --rocket-file .test.yml
         
     - os: linux
       language: generic
