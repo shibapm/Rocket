@@ -8,7 +8,7 @@ final class SwiftScriptExecutorTests: XCTestCase {
         let testPath = "TestPath.swift"
         let executor = SwiftScriptExecutor(dictionary: ["script_path": testPath])
 
-        executor.fileManager = DummyFileManager()
+        executor.fileManager = StubbedFileManager()
         let processLauncher = SpyProcessLauncher()
         executor.processLauncher = processLauncher
 
@@ -30,12 +30,6 @@ final class SwiftScriptExecutorTests: XCTestCase {
         executor.executeStep(version: "1.0.0", logger: Logger.testLogger)
 
         expect(processLauncher.receivedProcess?.launchPath).to(beNil())
-    }
-}
-
-fileprivate class DummyFileManager: FileManager {
-    override func fileExists(atPath _: String) -> Bool {
-        return true
     }
 }
 
