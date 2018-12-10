@@ -1,0 +1,11 @@
+---
+steps: 
+  - script: 
+      content: echo "Testing Release for $VERSION"
+  - script: 
+      content: echo "releasing $VERSION"
+  - hide_dev_dependencies
+  - git_add:
+      paths:
+        - Package.swift
+  - unhide_dev_dependencies

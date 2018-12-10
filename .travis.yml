@@ -5,6 +5,7 @@ matrix:
       osx_image: xcode10
       script:
         - swift test
+        - ./.build/x86_64-apple-macosx10.10/debug/rocket 1.0.0 --rocket-file .test.yml
         
     - os: linux
       language: generic
@@ -15,3 +16,4 @@ matrix:
         - swiftenv global 4.2
       script:
         - swift test
+        - ./.build/x86_64-unknown-linux/debug/rocket 1.0.0 --rocket-file .test.yml

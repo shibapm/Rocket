@@ -15,8 +15,7 @@ let version = CommandLine.arguments[1]
 
 var stepsDictionary: [String: Any]!
 
-let rocketYamlPath = ".rocket.yml"
-if FileManager.default.fileExists(atPath: rocketYamlPath) {
+if let rocketYamlPath = RocketFileFinder.rocketFilePath() {
     let string = try String(contentsOfFile: rocketYamlPath)
     guard let loadedDictionary = try Yams.load(yaml: string) as? [String: Any] else {
         logger.logError("Invalid YAML")
