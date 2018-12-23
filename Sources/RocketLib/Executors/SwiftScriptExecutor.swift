@@ -19,7 +19,7 @@ final class SwiftScriptExecutor: DefaultExecutor<SwiftScriptParameters> {
             "--driver-mode=swift",
             scriptPath,
             version,
-        ]
+        ] + parameters.arguments
 
         logger.logInfo("Running: \(swiftC) \(args.joined(separator: " "))")
 
