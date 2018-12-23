@@ -121,7 +121,7 @@ You can use the variable `$VERSION` inside the steps to refer to the version you
 
 ## Next steps
 
-- [ ] Show the scripts output on the stdout
+- [X] Show the scripts output on the stdout
 - [X] Add a step to execute script files written in swift
 - [ ] Add a step to execute ruby code
 - [X] Add a step to comment the dev dependencies on the `Package.swift`
