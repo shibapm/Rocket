@@ -14,10 +14,9 @@ final class ScriptLauncher: ScriptLaunching {
 
     private init() {}
 
-    func launchScript(withContent content: String, logger: Logger) throws {
+    func launchScript(withContent content: String, logger _: Logger) throws {
         #if os(Linux)
-            let output = try shellOut(to: ["export VERSION=\(version)", content])
-            logger.logInfo(output)
+            try shellOut(to: ["export VERSION=\(version)", content], outputHandle: WorkaroundFileHandler(fileDescriptor: FileHandle.standardOutput.fileDescriptor))
         #else
             try shellOut(to: ["export VERSION=\(version)", content], outputHandle: WorkaroundFileHandler())
         #endif
@@ -26,7 +25,11 @@ final class ScriptLauncher: ScriptLaunching {
 
 final class WorkaroundFileHandler: FileHandle {
     override func write(_ data: Data) {
-        FileHandle.standardOutput.write(data)
+        guard let string = String(data: data, encoding: .utf8), !string.isEmpty else {
+            return
+        }
+
+        Logger().logInfo(string)
     }
 
     override func closeFile() {}
