@@ -26,7 +26,7 @@ final class ScriptExecutorTests: ScriptLauncherTestCase {
     }
 
     private func givenAScriptExecutor(dictionary: [String: Any]?) -> ScriptExecutor {
-        return ScriptExecutor(dictionary: dictionary, scriptLauncher: scriptLauncher)
+        return ScriptExecutor(step: .script, dictionary: dictionary, scriptLauncher: scriptLauncher)
     }
 
     private func executeStep(withDictionary dictionary: [String: Any]?) {

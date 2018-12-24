@@ -3,6 +3,5 @@ import Logger
 
 public protocol StepExecutor {
     func executeStep(version: String, logger: Logger)
-
-    init(dictionary: [String: Any]?)
+    init(step: Step, dictionary: [String: Any]?)
 }

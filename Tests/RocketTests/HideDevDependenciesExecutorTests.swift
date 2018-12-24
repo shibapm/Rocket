@@ -15,7 +15,7 @@ final class HideDevDependenciesExecutorTests: XCTestCase {
 
     func checkDevDependencyModifierReceived(dictionary: [String: Any]?, expectedPackagePath: String) {
         let devDependenciesModifier = SpyDevDependenciesModifier()
-        let executor = HideDevDependenciesExecutor(dictionary: dictionary)
+        let executor = HideDevDependenciesExecutor(step: .hideDependencies, dictionary: dictionary)
         executor.devDependenciesModifier = devDependenciesModifier
         executor.executeStep(version: "1.0.0", logger: Logger.testLogger)
 
