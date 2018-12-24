@@ -108,11 +108,14 @@ _package_path_: `String` (optional): The relative path to your `Package.swift` f
 
 ### swift_script
 Compile and run a script file written in swift
+
 The version is passed to the script as first parameter
 
 **Parameters:**
 
 _script_path_: `String` (required): The relative path to the swift script
+
+_arguments_: `[String]` (optional): Additional arguments for the swift script
 <br/><br/>
 
 ## Variable $VERSION
