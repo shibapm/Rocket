@@ -22,7 +22,7 @@ final class CommitExecutorTests: ScriptLauncherTestCase {
     }
 
     private func givenACommitExecutor(dictionary: [String: Any]?) -> CommitExecutor {
-        return CommitExecutor(dictionary: dictionary, scriptLauncher: scriptLauncher)
+        return CommitExecutor(step: .commit, dictionary: dictionary, scriptLauncher: scriptLauncher)
     }
 
     private func executeCommitStep(withDictionary dictionary: [String: Any]?) {
