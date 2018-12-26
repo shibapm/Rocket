@@ -2,7 +2,7 @@
 struct PushParameters: StepParameters {
     let remote: String
     let branch: String
-    let noVerify: Bool
+    let noVerify: Bool?
 
     enum CodingKeys: String {
         case remote
@@ -13,6 +13,6 @@ struct PushParameters: StepParameters {
     init(dictionary: [String: Any]?) {
         remote = dictionary?[CodingKeys.remote] ?? "origin"
         branch = dictionary?[CodingKeys.branch] ?? "master"
-        noVerify = dictionary?[CodingKeys.noVerify] ?? false
+        noVerify = dictionary?[CodingKeys.noVerify]
     }
 }
