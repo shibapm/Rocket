@@ -39,7 +39,7 @@ final class CommitExecutorTests: ScriptLauncherTestCase {
 
     private func givenACommitExecutor(dictionary: [String: Any]?, gitHookFolderExists: Bool) -> CommitExecutor {
         fileManager.fileExistsResult = gitHookFolderExists
-        return CommitExecutor(dictionary: dictionary, scriptLauncher: scriptLauncher, fileManager: fileManager)
+        return CommitExecutor(step: .commit, dictionary: dictionary, scriptLauncher: scriptLauncher, fileManager: fileManager)
     }
 
     private func executeCommitStep(withDictionary dictionary: [String: Any]?, gitHookFolderExists: Bool) {

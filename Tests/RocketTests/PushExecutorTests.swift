@@ -39,7 +39,7 @@ final class PushExecutorTests: ScriptLauncherTestCase {
 
     private func executeStep(dictionary: [String: Any], hasGitHookFolder: Bool) {
         fileManager.fileExistsResult = hasGitHookFolder
-        let executor = PushExecutor(dictionary: dictionary, scriptLauncher: scriptLauncher, fileManager: fileManager)
+        let executor = PushExecutor(step: .push, dictionary: dictionary, scriptLauncher: scriptLauncher, fileManager: fileManager)
         executor.executeStep(version: "1.0.0", logger: Logger.testLogger)
     }
 }

@@ -3,12 +3,12 @@ import Foundation
 class NoVerifyParameterInserterExecutor<T: StepParameters>: ScriptLauncherExecutor<T> {
     let parameterInserter: NoVerifyParameterInserter
 
-    init(dictionary: [String: Any]?, scriptLauncher: ScriptLaunching, fileManager: FileManager) {
+    init(step: Step, dictionary: [String: Any]?, scriptLauncher: ScriptLaunching, fileManager: FileManager) {
         parameterInserter = NoVerifyParameterInserter(fileManager: fileManager)
-        super.init(dictionary: dictionary, scriptLauncher: scriptLauncher)
+        super.init(step: step, dictionary: dictionary, scriptLauncher: scriptLauncher)
     }
 
-    required convenience init(dictionary: [String: Any]?) {
-        self.init(dictionary: dictionary, scriptLauncher: ScriptLauncher.shared, fileManager: .default)
+    required convenience init(step: Step, dictionary: [String: Any]?) {
+        self.init(step: step, dictionary: dictionary, scriptLauncher: ScriptLauncher.shared, fileManager: .default)
     }
 }

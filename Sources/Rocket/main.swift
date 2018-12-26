@@ -32,5 +32,9 @@ if let rocketYamlPath = RocketFileFinder.rocketFilePath() {
 let versionExporter = VersionExporter()
 versionExporter.exportVersion(version)
 
+let stepPrinter = StepDescriptionPrinter()
 let stepExecutors = StepsParser.parseSteps(fromDictionary: stepsDictionary, logger: logger)
-stepExecutors.forEach { $0.executeStep(version: version, logger: logger) }
+stepExecutors.forEach {
+    $0.printStepDescription(logger: logger)
+    $0.executeStep(version: version, logger: logger)
+}

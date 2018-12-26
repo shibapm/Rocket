@@ -4,9 +4,10 @@ import Nimble
 import XCTest
 
 final class SwiftScriptExecutorTests: XCTestCase {
+    private let testPath = "TestPath.swift"
+
     func testItCreatesTheCorrectProcess() {
-        let testPath = "TestPath.swift"
-        let executor = SwiftScriptExecutor(dictionary: ["script_path": testPath])
+        let executor = SwiftScriptExecutor(step: .swiftScript, dictionary: ["script_path": testPath])
 
         executor.fileManager = StubbedFileManager()
         let processLauncher = SpyProcessLauncher()
@@ -22,8 +23,21 @@ final class SwiftScriptExecutorTests: XCTestCase {
         ]
     }
 
+    func testItPassesTheArgumentsToTheProcess() {
+        let arguments = ["test1", "test2", "test3"]
+        let executor = SwiftScriptExecutor(step: .swiftScript, dictionary: ["script_path": testPath, "arguments": arguments])
+
+        executor.fileManager = StubbedFileManager()
+        let processLauncher = SpyProcessLauncher()
+        executor.processLauncher = processLauncher
+
+        executor.executeStep(version: "1.0.0", logger: Logger.testLogger)
+
+        expect(processLauncher.receivedProcess?.arguments).to(contain(arguments))
+    }
+
     func testItDoesntCreateTheProcessIfThereIsNoScriptPath() {
-        let executor = SwiftScriptExecutor(dictionary: nil)
+        let executor = SwiftScriptExecutor(step: .swiftScript, dictionary: nil)
         let processLauncher = SpyProcessLauncher()
         executor.processLauncher = processLauncher
 
