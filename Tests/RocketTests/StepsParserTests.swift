@@ -58,6 +58,55 @@ final class StepsParserTests: XCTestCase {
         expect(steps[2]).to(beAKindOf(CommitExecutor.self))
         expect(steps[3]).to(beAKindOf(PushExecutor.self))
     }
+
+    func testItParsesCorrectlyBeforeAndAfterSteps() {
+        let dictionary = [
+            "before": [
+                ["script": ["content": "swiftlint"]],
+            ],
+            "after": [
+                ["script": ["content": "Script/after.sh"]],
+            ],
+        ]
+
+        let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: logger)
+
+        expect((steps[0] as! ScriptExecutor).parameters.content) == "swiftlint"
+        expect((steps[1] as! HideDevDependenciesExecutor).parameters.packagePath) == "Package.swift"
+        expect((steps[2] as! GitAddExecutor).parameters.paths) == ["."]
+        expect(steps[3]).to(beAKindOf(CommitExecutor.self))
+        expect(steps[4]).to(beAKindOf(TagExecutor.self))
+        expect((steps[5] as! UnhideDevDependenciesExecutor).parameters.packagePath) == "Package.swift"
+        expect((steps[6] as! GitAddExecutor).parameters.paths) == ["."]
+        expect(steps[7]).to(beAKindOf(CommitExecutor.self))
+        expect((steps[8] as! ScriptExecutor).parameters.content) == "Script/after.sh"
+    }
+
+    func testItParsesCorrectlyWhenOnlyBeforeIsSpecified() {
+        let dictionary = [
+            "before": [
+                ["script": ["content": "swiftlint"]],
+            ],
+        ]
+
+        let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: logger)
+
+        expect((steps[0] as! ScriptExecutor).parameters.content) == "swiftlint"
+        expect(steps.count) == 8
+    }
+
+    func testItParsesCorrectlyWhenOnlyAfterIsSpecified() {
+        let dictionary = [
+            "after": [
+                ["script": ["content": "Script/after.sh"]],
+            ],
+        ]
+
+        let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: logger)
+
+        expect((steps[7] as! ScriptExecutor).parameters.content) == "Script/after.sh"
+        expect(steps.count) == 8
+    }
 }
 
 extension PushParameters: Equatable {
