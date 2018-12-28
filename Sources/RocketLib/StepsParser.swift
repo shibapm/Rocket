@@ -24,17 +24,24 @@ public class StepsParser {
             exit(1)
         }
 
-        return stepsArray.compactMap { element in
-            if let stepString = element as? String,
-                let step = Step(rawValue: stepString) {
+        return stepsArray.compactMap {
+            parseElement($0, logger: logger)
+        }
+    }
+
+    private static func parseElement(_ element: Any, logger: Logger) -> StepExecutor? {
+        if let string = element as? String {
+            if let step = Step(rawValue: string) {
                 return step.executor(dictionary: nil)
-            } else if let stepDict = element as? [String: Any],
-                let step = step(fromDictionary: stepDict) {
-                return step.executor(dictionary: stepDict[step.rawValue] as? [String: Any])
             } else {
-                logger.logWarning("Invalid step found")
-                return nil
+                return Step.script.executor(dictionary: [ScriptParameters.CodingKeys.content.rawValue: string])
             }
+        } else if let stepDict = element as? [String: Any],
+            let step = step(fromDictionary: stepDict) {
+            return step.executor(dictionary: stepDict[step.rawValue] as? [String: Any])
+        } else {
+            logger.logWarning("Invalid step found")
+            return nil
         }
     }
 
