@@ -7,7 +7,7 @@ import Yams
 let logger = Logger()
 
 guard CommandLine.arguments.count > 1 else {
-    logger.logError("You need to provive the version number that you want release")
+    logger.logError("You need to provide the version number that you want release")
     exit(1)
 }
 

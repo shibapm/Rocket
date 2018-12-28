@@ -1,7 +1,7 @@
 
 struct CommitParameters: StepParameters {
     let message: String?
-    let noVerify: Bool
+    let noVerify: Bool?
 
     enum CodingKeys: String {
         case message
@@ -10,6 +10,6 @@ struct CommitParameters: StepParameters {
 
     init(dictionary: [String: Any]?) {
         message = dictionary?[CodingKeys.message]
-        noVerify = dictionary?[CodingKeys.noVerify] ?? false
+        noVerify = dictionary?[CodingKeys.noVerify]
     }
 }

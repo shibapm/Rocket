@@ -6,23 +6,40 @@ import TestSpy
 import XCTest
 
 final class PushExecutorTests: ScriptLauncherTestCase {
+    var fileManager: StubbedFileManager!
+
+    override func setUp() {
+        super.setUp()
+        fileManager = StubbedFileManager()
+    }
+
     func testItSendsTheCorrectScriptContent() {
         let testRemote = "testRemote"
         let testBranch = "testBranch"
         let dictionary = ["remote": testRemote, "branch": testBranch]
 
-        let executor = PushExecutor(step: .push, dictionary: dictionary, scriptLauncher: scriptLauncher)
-        executor.executeStep(version: "1.0.0", logger: Logger.testLogger)
+        executeStep(dictionary: dictionary, hasGitHookFolder: false)
 
         expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git push \(testRemote) \(testBranch) --tags")))
+    }
+
+    func testItAddsTheNoVerifyParameterIfGitHookFolderIsPresent() {
+        executeStep(dictionary: [:], hasGitHookFolder: true)
+
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git push origin master --tags --no-verify")))
     }
 
     func testItSendsTheNoVerifyParameterIfRequired() {
         let dictionary = ["no_verify": true]
 
-        let executor = PushExecutor(step: .push, dictionary: dictionary, scriptLauncher: scriptLauncher)
-        executor.executeStep(version: "1.0.0", logger: Logger.testLogger)
+        executeStep(dictionary: dictionary, hasGitHookFolder: false)
 
         expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git push origin master --tags --no-verify")))
+    }
+
+    private func executeStep(dictionary: [String: Any], hasGitHookFolder: Bool) {
+        fileManager.fileExistsResult = hasGitHookFolder
+        let executor = PushExecutor(step: .push, dictionary: dictionary, scriptLauncher: scriptLauncher, fileManager: fileManager)
+        executor.executeStep(version: "1.0.0", logger: Logger.testLogger)
     }
 }

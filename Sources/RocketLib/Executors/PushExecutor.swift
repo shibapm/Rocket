@@ -1,12 +1,11 @@
+import Foundation
 import Logger
 
-final class PushExecutor: ScriptLauncherExecutor<PushParameters> {
+final class PushExecutor: NoVerifyParameterInserterExecutor<PushParameters> {
     override func executeStep(version _: String, logger: Logger) {
         var scriptString = "git push \(parameters.remote) \(parameters.branch) --tags"
 
-        if parameters.noVerify {
-            scriptString += " --no-verify"
-        }
+        parameterInserter.insertNoVerifyParameterIfNeeded(string: &scriptString, noVerifyParameter: parameters.noVerify)
 
         launchScript(content: scriptString, errorMessage: "Push step failed with error", logger: logger)
     }
