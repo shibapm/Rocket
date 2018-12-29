@@ -18,9 +18,9 @@ let package = Package(
         .package(url: "https://github.com/f-meloni/Logger", from: "0.2.0"),
         .package(url: "https://github.com/JohnSundell/ShellOut.git", from: "2.1.0"),
         .package(url: "https://github.com/orta/PackageConfig.git", from: "0.0.1"),
+        .package(url: "https://github.com/Quick/Nimble", from: "7.3.1"),
+        .package(url: "https://github.com/f-meloni/TestSpy", from: "0.3.1"),
         // Dev Dependencies for testing.setup
-        .package(url: "https://github.com/Quick/Nimble", from: "7.3.1"), // dev
-        .package(url: "https://github.com/f-meloni/TestSpy", from: "0.3.1"), // dev
         .package(url: "https://github.com/orta/Komondor.git", from: "1.0.0"), // dev
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"), // dev
     ],
