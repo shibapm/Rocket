@@ -19,7 +19,7 @@ final class ScriptLauncher: ScriptLaunching {
             let output = try shellOut(to: ["export VERSION=\(version)", content])
             logger.logInfo(output)
         #else
-            try shellOut(to: ["export VERSION=\(version)", content], outputHandle: WorkaroundFileHandler())
+            try shellOut(to: ["export VERSION=\(version)", content])
         #endif
     }
 }

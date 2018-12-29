@@ -13,65 +13,42 @@ final class DefaultExecutorStepDescriptionTests: XCTestCase {
         logger = Logger(isVerbose: false, isSilent: false, printer: printer)
     }
 
-    func testItShowsTheCorrectDescriptionWhenThereAreNoParameters() {
+    func testItShowsTheCorrectStartDescriptionWhenThereAreNoParameters() {
         let dictionary: [String: Any] = [:]
         let executor = DefaultExecutor<TagParameters>(step: .tag, dictionary: dictionary)
 
-        executor.printStepDescription(logger: logger)
+        executor.printStartStepDescription(logger: logger)
 
-        expect(self.printer.receivedMessages) == [
-            "",
-            "==============================================",
-            "",
-            "- Executing step:",
-            "",
-            "tag",
-            "",
-            "==============================================",
-            "",
-        ]
+        expect(self.printer.receivedMessages) == ["- tag"]
     }
 
-    func testItShowsTheCorrectDescriptionWhenThereAreParameters() {
+    func testItShowsTheCorrectStartDescriptionWhenThereAreParameters() {
         let dictionary: [String: Any] = ["arguments": ["a", "b", "c"]]
         let executor = DefaultExecutor<SwiftScriptParameters>(step: .swiftScript, dictionary: dictionary)
 
-        executor.printStepDescription(logger: logger)
+        executor.printStartStepDescription(logger: logger)
 
-        expect(self.printer.receivedMessages) == [
-            "",
-            "==============================================",
-            "",
-            "- Executing step:",
-            "",
-            "swift_script",
-            "",
-            "",
-            "- Parameters:",
-            "",
-            "arguments: [\"a\", \"b\", \"c\"]",
-            "",
-            "==============================================",
-            "",
-        ]
+        expect(self.printer.receivedMessages) == ["- swift_script (arguments=[\"a\", \"b\", \"c\"])"]
     }
 
-    func testItShowsTheCorrectDescriptionWhenParametersAreNil() {
+    func testItShowsTheCorrectEndDescriptionWhenThereAreNoParameters() {
         let dictionary: [String: Any] = [:]
-        let executor = DefaultExecutor<ScriptParameters>(step: .script, dictionary: dictionary)
+        let executor = DefaultExecutor<TagParameters>(step: .tag, dictionary: dictionary)
 
-        executor.printStepDescription(logger: logger)
+        executor.printEndStepDescription(logger: logger)
 
-        expect(self.printer.receivedMessages) == [
-            "",
-            "==============================================",
-            "",
-            "- Executing step:",
-            "",
-            "script",
-            "",
-            "==============================================",
-            "",
-        ]
+        expect(self.printer.receivedMessages[0]) == "\r"
+        expect(self.printer.receivedMessages[1].contains("tag")) == true
+        expect(self.printer.receivedMessages[1].contains("(")) == false
+    }
+
+    func testItShowsTheCorrectEndDescriptionWhenThereAreParameters() {
+        let dictionary: [String: Any] = ["arguments": ["a", "b", "c"]]
+        let executor = DefaultExecutor<SwiftScriptParameters>(step: .swiftScript, dictionary: dictionary)
+
+        executor.printEndStepDescription(logger: logger)
+
+        expect(self.printer.receivedMessages[0]) == "\r"
+        expect(self.printer.receivedMessages[1].contains("swift_script (arguments=[\"a\", \"b\", \"c\"])")) == true
     }
 }
