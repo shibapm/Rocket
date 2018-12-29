@@ -2,34 +2,24 @@ import Logger
 
 public final class StepDescriptionPrinter {
     public init() {}
-    private let separator = "=============================================="
 
-    func printStepDescription<T: StepParameters>(forDefaultExecutor executor: DefaultExecutor<T>, logger: Logger) {
-        logger.logInfo("")
-        printSeparator(logger: logger)
-        logger.logInfo("")
-        logger.logInfo("- Executing step:")
-        logger.logInfo("")
-        logger.logInfo(executor.step.rawValue)
-
-        let parametersString = Mirror(reflecting: executor.parameters).children.compactMap { parameterString(fromChild: $0) }.joined(separator: "\n")
-
-        if !parametersString.isEmpty {
-            logger.logInfo("")
-            logger.logInfo("")
-            logger.logInfo("- Parameters:")
-            logger.logInfo("")
-
-            logger.logInfo(parametersString)
-        }
-
-        logger.logInfo("")
-        printSeparator(logger: logger)
-        logger.logInfo("")
+    enum PrintType {
+        case start
+        case end
     }
 
-    private func printSeparator(logger: Logger) {
-        logger.logInfo(separator)
+    func printStepDescription<T: StepParameters>(forDefaultExecutor executor: DefaultExecutor<T>, logger: Logger, type: PrintType) {
+        let parametersString = Mirror(reflecting: executor.parameters).children.compactMap { parameterString(fromChild: $0) }.joined(separator: " ")
+
+        let stepDescription = executor.step.rawValue + (parametersString.count > 0 ? " (\(parametersString))" : "")
+
+        switch type {
+        case .start:
+            logger.logInfo("- " + stepDescription, terminator: "")
+        case .end:
+            logger.logInfo("\r", terminator: "")
+            logger.logSuccess(stepDescription)
+        }
     }
 
     private func parameterString(fromChild child: Mirror.Child) -> String? {
@@ -42,7 +32,7 @@ public final class StepDescriptionPrinter {
         }
 
         if let valueString = valueString {
-            return "\(child.label ?? ""): \(valueString)"
+            return "\(child.label ?? "")=\(valueString)"
         } else {
             return nil
         }

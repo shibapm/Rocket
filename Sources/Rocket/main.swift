@@ -15,6 +15,8 @@ let version = CommandLine.arguments[1]
 
 var stepsDictionary: [String: Any]!
 
+let startingTime = Date()
+
 if let rocketYamlPath = RocketFileFinder.rocketFilePath() {
     let string = try String(contentsOfFile: rocketYamlPath)
     guard let loadedDictionary = try Yams.load(yaml: string) as? [String: Any] else {
@@ -35,6 +37,10 @@ versionExporter.exportVersion(version)
 let stepPrinter = StepDescriptionPrinter()
 let stepExecutors = StepsParser.parseSteps(fromDictionary: stepsDictionary, logger: logger)
 stepExecutors.forEach {
-    $0.printStepDescription(logger: logger)
+    $0.printStartStepDescription(logger: logger)
     $0.executeStep(version: version, logger: logger)
+    $0.printEndStepDescription(logger: logger)
 }
+
+logger.logInfo("")
+logger.logInfo("Done in", String(format: "%0.4fs", startingTime.timeIntervalSinceNow * -1))

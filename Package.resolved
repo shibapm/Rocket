@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/f-meloni/Logger",
         "state": {
           "branch": null,
-          "revision": "cdb2adb8aadfae75e2a0eb82318b5980b5d5eba5",
-          "version": "0.1.0"
+          "revision": "ca5703dd05cabad21ee6cd77023a7bb7d5c9eeba",
+          "version": "0.2.1"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/nicklockwood/SwiftFormat.git",
         "state": {
           "branch": null,
-          "revision": "7a944b895c494c18d540d3ddbdcb8adee6490cda",
-          "version": "0.35.9"
+          "revision": "67219a30460f0459bfbe4b21e8bb55cc70bcbf50",
+          "version": "0.37.1"
         }
       },
       {

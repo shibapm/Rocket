@@ -10,8 +10,12 @@ class DefaultExecutor<T: StepParameters>: StepExecutor {
         parameters = T(dictionary: dictionary)
     }
 
-    func printStepDescription(logger: Logger) {
-        stepDescriptionPrinter.printStepDescription(forDefaultExecutor: self, logger: logger)
+    func printStartStepDescription(logger: Logger) {
+        stepDescriptionPrinter.printStepDescription(forDefaultExecutor: self, logger: logger, type: .start)
+    }
+
+    func printEndStepDescription(logger: Logger) {
+        stepDescriptionPrinter.printStepDescription(forDefaultExecutor: self, logger: logger, type: .end)
     }
 
     func executeStep(version _: String, logger _: Logger) {
