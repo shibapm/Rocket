@@ -48,6 +48,32 @@ With PackageConfig (https://github.com/orta/PackageConfig) you can put the confi
     ])
 ```
 
+## Before/After steps
+If you use the `before` and/or `after` keys
+
+e.g.
+
+```yaml
+---
+before: 
+  - script: 
+      content: echo "Testing Release for $VERSION"
+after:
+  - script: 
+      content: echo "released $VERSION"
+```
+
+Rocket will execute some default steps between the before and after steps:
+
+- `echo "Testing Release for $VERSION"`
+
+- **hide_dev_dependencies**
+- **commit**
+- **unhide_dev_dependencies**
+- **commit** (message: "Unhide dev dependencies")
+
+- `echo "released $VERSION"`
+
 ## Supported Steps
 
 ### script
@@ -124,8 +150,6 @@ You can use the variable `$VERSION` inside the steps to refer to the version you
 
 ## Next steps
 
-- [X] Show the scripts output on the stdout
 - [X] Add a step to execute script files written in swift
-- [ ] Add a step to execute ruby code
 - [X] Add a step to comment the dev dependencies on the `Package.swift`
 - [ ] Add a step to create Github releases
