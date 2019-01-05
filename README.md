@@ -118,6 +118,7 @@ _branch_: `String` (optional): The name of the branch you want to push - **defau
 
 ### hide_dev_dependencies
 Comment the dev dependencies on your `Package.swift` to avoid them to be shipped with your release
+Dev dependencies are all the lines in the `Package.swift` file with `// dev`
 
 **Parameters:**
 
