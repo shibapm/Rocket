@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/f-meloni/Logger",
         "state": {
           "branch": null,
-          "revision": "ca5703dd05cabad21ee6cd77023a7bb7d5c9eeba",
-          "version": "0.2.1"
+          "revision": "c1cb5a142b99687ecc55d8de101bf082889f5fd1",
+          "version": "0.2.2"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/JohnSundell/ShellOut.git",
         "state": {
           "branch": null,
-          "revision": "f1c253a34a40df4bfd268b09fdb101b059f6d52d",
-          "version": "2.1.0"
+          "revision": "d3d54ce662dfee7fef619330b71d251b8d4869f9",
+          "version": "2.2.0"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/nicklockwood/SwiftFormat.git",
         "state": {
           "branch": null,
-          "revision": "67219a30460f0459bfbe4b21e8bb55cc70bcbf50",
-          "version": "0.37.1"
+          "revision": "aaed92d1b05a65f6ad385f79ca49e8f1747226ac",
+          "version": "0.37.2"
         }
       },
       {
