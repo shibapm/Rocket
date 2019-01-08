@@ -74,6 +74,18 @@ Rocket will execute some default steps between the before and after steps:
 
 - `echo "released $VERSION"`
 
+## Hide dev dependencies
+When you release a package you want that who adds it as dependency downloads just the dependencies that are really needed to your package.
+
+This is why Rocket introduces the concept of dev dependency, if you have in your package some scripts e.g. swiftformat you can add them as dev dependencies (by adding `// dev` after them) and they will be commented by the `hide_dev_dependencies` step and uncommented from the `unhide_dev_dependencies`.
+
+That is also valid for the dependencies that are used just from test targets, but in that case you will have to add the test target as dev dependency too.<br/><br/>
+
+Some examples are:
+- https://github.com/danger/swift/blob/master/Package.swift
+- https://github.com/f-meloni/Rocket/blob/master/Package.swift
+- https://github.com/f-meloni/Logger/blob/master/Package.swift
+
 ## Supported Steps
 
 ### script
