@@ -7,9 +7,9 @@ protocol ScriptLauncherContainer {
 }
 
 extension ScriptLauncherContainer {
-    func launchScript(content: String, errorMessage: String, logger: Logger) {
+    func launchScript(content: String, version: String? = nil, errorMessage: String, logger: Logger) {
         do {
-            try scriptLauncher.launchScript(withContent: content, logger: logger)
+            try scriptLauncher.launchScript(withContent: content, version: version, logger: logger)
         } catch {
             let shellError = error as! ShellOutError
             logger.logError(errorMessage, shellError.message)
@@ -17,7 +17,7 @@ extension ScriptLauncherContainer {
         }
     }
 
-    func launchScript(command: ShellOutCommand, errorMessage: String, logger: Logger) {
-        launchScript(content: command.string, errorMessage: errorMessage, logger: logger)
+    func launchScript(command: ShellOutCommand, version: String? = nil, errorMessage: String, logger: Logger) {
+        launchScript(content: command.string, version: version, errorMessage: errorMessage, logger: logger)
     }
 }

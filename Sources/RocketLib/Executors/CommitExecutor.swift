@@ -8,6 +8,6 @@ final class CommitExecutor: NoVerifyParameterInserterExecutor<CommitParameters> 
 
         parameterInserter.insertNoVerifyParameterIfNeeded(string: &scriptString, noVerifyParameter: parameters.noVerify)
 
-        launchScript(content: scriptString, errorMessage: "Commit step failed with error", logger: logger)
+        launchScript(content: scriptString, version: version, errorMessage: "Commit step failed with error", logger: logger)
     }
 }

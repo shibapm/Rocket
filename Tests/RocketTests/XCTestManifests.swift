@@ -2,9 +2,19 @@ import XCTest
 
 extension CommitExecutorTests {
     static let __allTests = [
+        ("testItSetsTheParameterIfTheGitHookFolderExists", testItSetsTheParameterIfTheGitHookFolderExists),
         ("testItUsesAWorkaroundToGenerateTheTestsOnLinux", testItUsesAWorkaroundToGenerateTheTestsOnLinux),
         ("testItUsesTheParametersIfAny", testItUsesTheParametersIfAny),
         ("testItUsesTheStandardCommitMessageIfNoMessageIsProvided", testItUsesTheStandardCommitMessageIfNoMessageIsProvided),
+    ]
+}
+
+extension DefaultExecutorStepDescriptionTests {
+    static let __allTests = [
+        ("testItShowsTheCorrectEndDescriptionWhenThereAreNoParameters", testItShowsTheCorrectEndDescriptionWhenThereAreNoParameters),
+        ("testItShowsTheCorrectEndDescriptionWhenThereAreParameters", testItShowsTheCorrectEndDescriptionWhenThereAreParameters),
+        ("testItShowsTheCorrectStartDescriptionWhenThereAreNoParameters", testItShowsTheCorrectStartDescriptionWhenThereAreNoParameters),
+        ("testItShowsTheCorrectStartDescriptionWhenThereAreParameters", testItShowsTheCorrectStartDescriptionWhenThereAreParameters),
     ]
 }
 
@@ -32,9 +42,18 @@ extension HideDevDependenciesExecutorTests {
 
 extension PushExecutorTests {
     static let __allTests = [
+        ("testItAddsTheNoVerifyParameterIfGitHookFolderIsPresent", testItAddsTheNoVerifyParameterIfGitHookFolderIsPresent),
         ("testItSendsTheCorrectScriptContent", testItSendsTheCorrectScriptContent),
         ("testItSendsTheNoVerifyParameterIfRequired", testItSendsTheNoVerifyParameterIfRequired),
         ("testItUsesAWorkaroundToGenerateTheTestsOnLinux", testItUsesAWorkaroundToGenerateTheTestsOnLinux),
+    ]
+}
+
+extension RocketFileFinderTests {
+    static let __allTests = [
+        ("testItReturnsNilIfThereAreNoArgumentsAndTheDefaultFileDoesntExist", testItReturnsNilIfThereAreNoArgumentsAndTheDefaultFileDoesntExist),
+        ("testItReturnsTheArgumentPathIfPresent", testItReturnsTheArgumentPathIfPresent),
+        ("testItReturnsTheDefaultPathIfNoArgsAreThereAndTheFileExists", testItReturnsTheDefaultPathIfNoArgsAreThereAndTheFileExists),
     ]
 }
 
@@ -49,8 +68,12 @@ extension ScriptExecutorTests {
 
 extension StepsParserTests {
     static let __allTests = [
+        ("testItCreatesAScriptStepForNotRecognisedStrings", testItCreatesAScriptStepForNotRecognisedStrings),
         ("testItIgnoresTheInvalidSteps", testItIgnoresTheInvalidSteps),
         ("testItParsesCorrectlyAValidDictionary", testItParsesCorrectlyAValidDictionary),
+        ("testItParsesCorrectlyBeforeAndAfterSteps", testItParsesCorrectlyBeforeAndAfterSteps),
+        ("testItParsesCorrectlyWhenOnlyAfterIsSpecified", testItParsesCorrectlyWhenOnlyAfterIsSpecified),
+        ("testItParsesCorrectlyWhenOnlyBeforeIsSpecified", testItParsesCorrectlyWhenOnlyBeforeIsSpecified),
     ]
 }
 
@@ -58,6 +81,7 @@ extension SwiftScriptExecutorTests {
     static let __allTests = [
         ("testItCreatesTheCorrectProcess", testItCreatesTheCorrectProcess),
         ("testItDoesntCreateTheProcessIfThereIsNoScriptPath", testItDoesntCreateTheProcessIfThereIsNoScriptPath),
+        ("testItPassesTheArgumentsToTheProcess", testItPassesTheArgumentsToTheProcess),
     ]
 }
 
@@ -75,27 +99,21 @@ extension UnhideDevDependenciesExecutorTests {
     ]
 }
 
-extension VersionExporterTests {
-    static let __allTests = [
-        ("testItSetsTheCorrectVersionToTheScriptLauncher", testItSetsTheCorrectVersionToTheScriptLauncher),
-        ("testItUsesAWorkaroundToGenerateTheTestsOnLinux", testItUsesAWorkaroundToGenerateTheTestsOnLinux),
-    ]
-}
-
 #if !os(macOS)
     public func __allTests() -> [XCTestCaseEntry] {
         return [
             testCase(CommitExecutorTests.__allTests),
+            testCase(DefaultExecutorStepDescriptionTests.__allTests),
             testCase(DevDependenciesModifierTests.__allTests),
             testCase(GitAddExecutorTests.__allTests),
             testCase(HideDevDependenciesExecutorTests.__allTests),
             testCase(PushExecutorTests.__allTests),
+            testCase(RocketFileFinderTests.__allTests),
             testCase(ScriptExecutorTests.__allTests),
             testCase(StepsParserTests.__allTests),
             testCase(SwiftScriptExecutorTests.__allTests),
             testCase(TagExecutorTests.__allTests),
             testCase(UnhideDevDependenciesExecutorTests.__allTests),
-            testCase(VersionExporterTests.__allTests),
         ]
     }
 #endif

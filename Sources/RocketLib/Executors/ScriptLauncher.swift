@@ -3,22 +3,21 @@ import Logger
 import ShellOut
 
 protocol ScriptLaunching {
-    var version: String { get set }
-
-    func launchScript(withContent content: String, logger: Logger) throws
+    func launchScript(withContent content: String, version: String?, logger: Logger) throws
 }
 
 final class ScriptLauncher: ScriptLaunching {
-    static let shared = ScriptLauncher()
-    var version: String = ""
+    init() {}
 
-    private init() {}
+    func launchScript(withContent content: String, version: String?, logger _: Logger) throws {
+        var contents: [String] = []
 
-    func launchScript(withContent content: String, logger _: Logger) throws {
-        #if os(Linux)
-            try shellOut(to: ["export VERSION=\(version)", content])
-        #else
-            try shellOut(to: ["export VERSION=\(version)", content])
-        #endif
+        if let version = version {
+            contents.append("export VERSION=\(version)")
+        }
+
+        contents.append(content)
+
+        try shellOut(to: contents)
     }
 }
