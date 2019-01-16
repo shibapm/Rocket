@@ -3,7 +3,7 @@ class ScriptLauncherExecutor<T: StepParameters>: DefaultExecutor<T>, ScriptLaunc
     let scriptLauncher: ScriptLaunching
 
     required convenience init(step: Step, dictionary: [String: Any]?) {
-        self.init(step: step, dictionary: dictionary, scriptLauncher: ScriptLauncher.shared)
+        self.init(step: step, dictionary: dictionary, scriptLauncher: ScriptLauncher())
     }
 
     init(step: Step, dictionary: [String: Any]?, scriptLauncher: ScriptLaunching) {

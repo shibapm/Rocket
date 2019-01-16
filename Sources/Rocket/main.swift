@@ -31,9 +31,6 @@ if let rocketYamlPath = RocketFileFinder.rocketFilePath() {
     logger.logError("Steps not found")
 }
 
-let versionExporter = VersionExporter()
-versionExporter.exportVersion(version)
-
 let stepPrinter = StepDescriptionPrinter()
 let stepExecutors = StepsParser.parseSteps(fromDictionary: stepsDictionary, logger: logger)
 stepExecutors.forEach {

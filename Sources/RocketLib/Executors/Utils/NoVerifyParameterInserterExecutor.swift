@@ -9,6 +9,6 @@ class NoVerifyParameterInserterExecutor<T: StepParameters>: ScriptLauncherExecut
     }
 
     required convenience init(step: Step, dictionary: [String: Any]?) {
-        self.init(step: step, dictionary: dictionary, scriptLauncher: ScriptLauncher.shared, fileManager: .default)
+        self.init(step: step, dictionary: dictionary, scriptLauncher: ScriptLauncher(), fileManager: .default)
     }
 }

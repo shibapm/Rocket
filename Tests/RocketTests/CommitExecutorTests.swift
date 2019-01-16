@@ -19,7 +19,7 @@ final class CommitExecutorTests: ScriptLauncherTestCase {
 
         executeCommitStep(withDictionary: dictionary, gitHookFolderExists: false)
 
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git commit -m \"\(testMessage)\" --no-verify")))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git commit -m \"\(testMessage)\" --no-verify", version: "1.0.0")))
     }
 
     func testItSetsTheParameterIfTheGitHookFolderExists() {
@@ -28,13 +28,13 @@ final class CommitExecutorTests: ScriptLauncherTestCase {
 
         executeCommitStep(withDictionary: dictionary, gitHookFolderExists: true)
 
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git commit -m \"\(testMessage)\" --no-verify")))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git commit -m \"\(testMessage)\" --no-verify", version: "1.0.0")))
     }
 
     func testItUsesTheStandardCommitMessageIfNoMessageIsProvided() {
         executeCommitStep(withDictionary: nil, gitHookFolderExists: false)
 
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git commit -m \"Version 1.0.0\"")))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git commit -m \"Version 1.0.0\"", version: "1.0.0")))
     }
 
     private func givenACommitExecutor(dictionary: [String: Any]?, gitHookFolderExists: Bool) -> CommitExecutor {

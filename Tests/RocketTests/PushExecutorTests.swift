@@ -20,13 +20,13 @@ final class PushExecutorTests: ScriptLauncherTestCase {
 
         executeStep(dictionary: dictionary, hasGitHookFolder: false)
 
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git push \(testRemote) \(testBranch) --tags")))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git push \(testRemote) \(testBranch) --tags", version: "1.0.0")))
     }
 
     func testItAddsTheNoVerifyParameterIfGitHookFolderIsPresent() {
         executeStep(dictionary: [:], hasGitHookFolder: true)
 
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git push origin master --tags --no-verify")))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git push origin master --tags --no-verify", version: "1.0.0")))
     }
 
     func testItSendsTheNoVerifyParameterIfRequired() {
@@ -34,7 +34,7 @@ final class PushExecutorTests: ScriptLauncherTestCase {
 
         executeStep(dictionary: dictionary, hasGitHookFolder: false)
 
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git push origin master --tags --no-verify")))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git push origin master --tags --no-verify", version: "1.0.0")))
     }
 
     private func executeStep(dictionary: [String: Any], hasGitHookFolder: Bool) {

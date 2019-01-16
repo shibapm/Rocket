@@ -9,7 +9,7 @@ final class ScriptExecutorTests: ScriptLauncherTestCase {
         let testContent = "test"
         executeStep(withDictionary: ["content": testContent])
 
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: testContent)))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: testContent, version: "1.0.0")))
     }
 
     func testItDoesntSendAnyCommandToTheScriptLauncherIfTheContentIsEmpty() {

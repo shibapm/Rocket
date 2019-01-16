@@ -10,6 +10,6 @@ final class TagExecutorTests: ScriptLauncherTestCase {
         let executor = TagExecutor(step: .tag, dictionary: nil, scriptLauncher: scriptLauncher)
         executor.executeStep(version: testVersion, logger: Logger.testLogger)
 
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git tag \(testVersion)")))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git tag \(testVersion)", version: nil)))
     }
 }
