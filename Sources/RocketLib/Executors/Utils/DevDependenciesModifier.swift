@@ -1,4 +1,3 @@
-
 protocol DevDependenciesModifing {
     func hideDependencies(packagePath: String) throws
     func unhideDependencies(packagePath: String) throws

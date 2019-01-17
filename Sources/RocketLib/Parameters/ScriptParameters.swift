@@ -1,4 +1,3 @@
-
 struct ScriptParameters: StepParameters {
     let content: String?
 

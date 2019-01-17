@@ -1,4 +1,3 @@
-
 struct ModifyDevDependenciesParameters: StepParameters {
     var packagePath: String
 

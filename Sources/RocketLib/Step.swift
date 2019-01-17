@@ -1,4 +1,3 @@
-
 public enum Step: String {
     case script
     case commit
