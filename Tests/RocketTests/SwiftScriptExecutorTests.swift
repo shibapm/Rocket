@@ -47,7 +47,7 @@ final class SwiftScriptExecutorTests: XCTestCase {
     }
 }
 
-fileprivate class SpyProcessLauncher: ProcessLaunching {
+private class SpyProcessLauncher: ProcessLaunching {
     var receivedProcess: Process?
 
     func launchProcess(process: Process) {

@@ -1,4 +1,3 @@
-
 class ScriptLauncherExecutor<T: StepParameters>: DefaultExecutor<T>, ScriptLauncherContainer {
     let scriptLauncher: ScriptLaunching
 

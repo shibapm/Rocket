@@ -1,4 +1,3 @@
-
 struct SwiftScriptParameters: StepParameters {
     let scriptPath: String?
     let arguments: [String]

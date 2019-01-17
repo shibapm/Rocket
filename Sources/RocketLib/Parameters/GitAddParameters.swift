@@ -1,4 +1,3 @@
-
 struct GitAddParameters: StepParameters {
     let paths: [String]
 

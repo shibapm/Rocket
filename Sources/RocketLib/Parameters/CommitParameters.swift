@@ -1,4 +1,3 @@
-
 struct CommitParameters: StepParameters {
     let message: String?
     let noVerify: Bool?
