@@ -6,4 +6,3 @@ final class BranchExecutor: ScriptLauncherExecutor<BranchParameters> {
         launchScript(content: "git checkout -b " + parameters.name, version: version, errorMessage: "Branch step failed with error", logger: logger)
     }
 }
-
