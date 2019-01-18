@@ -3,6 +3,7 @@ public enum Step: String {
     case commit
     case tag
     case push
+    case branch
     case gitAdd = "git_add"
     case hideDependencies = "hide_dev_dependencies"
     case unhideDependencies = "unhide_dev_dependencies"
@@ -30,6 +31,8 @@ public enum Step: String {
             return UnhideDevDependenciesExecutor.self
         case .swiftScript:
             return SwiftScriptExecutor.self
+        case .branch:
+            return BranchExecutor.self
         }
     }
 }
