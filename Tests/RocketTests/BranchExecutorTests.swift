@@ -12,7 +12,7 @@ final class BranchExecutorTests: ScriptLauncherTestCase {
         expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git branch test-branch && git checkout test-branch", version: "1.0.0")))
     }
 
-    func testItSendsMasterBranchNameIfTheDictionaryIsNil() {
+    func testItSendsEmptyScriptIfTheDictionaryIsNil() {
         executeStep(withDictionary: nil)
 
         expect(self.scriptLauncher).to(beEmpty())
