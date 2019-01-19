@@ -9,13 +9,13 @@ final class BranchExecutorTests: ScriptLauncherTestCase {
         let branchName = "test-branch"
         executeStep(withDictionary: ["name": branchName])
 
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git checkout -b test-branch", version: "1.0.0")))
+        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git branch test-branch && git checkout test-branch", version: "1.0.0")))
     }
 
     func testItSendsMasterBranchNameIfTheDictionaryIsNil() {
         executeStep(withDictionary: nil)
 
-        expect(self.scriptLauncher).to(haveReceived(.launchScript(content: "git checkout -b master", version: "1.0.0")))
+        expect(self.scriptLauncher).to(beEmpty())
     }
 
     private func givenABranchExecutor(dictionary: [String: Any]?) -> BranchExecutor {

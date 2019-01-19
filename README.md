@@ -104,6 +104,14 @@ Adds the files to the git's staging area
 _paths_: `[String]` (optional): The paths you want to add to the staging area - **default**: `[.]`
 <br/><br/>
 
+### branch
+Creates a new git branch and switches to it. It fails if the branch already exists
+
+**Parameters:**
+
+_branchName_:`String`(required): The name of the new branch
+<br/><br/>
+
 ### commit
 Commits on git
 

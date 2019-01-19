@@ -1,11 +1,11 @@
 struct BranchParameters: StepParameters {
-    let name: String
+    let name: String?
 
     enum CodingKeys: String {
         case name
     }
 
     init(dictionary: [String: Any]?) {
-        name = dictionary?[CodingKeys.name] ?? "master"
+        name = dictionary?[CodingKeys.name]
     }
 }
