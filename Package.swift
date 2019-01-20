@@ -16,7 +16,7 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/jpsim/Yams", from: "1.0.0"),
         .package(url: "https://github.com/f-meloni/Logger", from: "0.2.2"),
-        .package(url: "https://github.com/JohnSundell/ShellOut.git", from: "2.1.0"),
+        .package(url: "https://github.com/kareman/SwiftShell", from: "4.1.0"),
         .package(url: "https://github.com/orta/PackageConfig.git", from: "0.0.1"),
         // Dev Dependencies for testing.setup
         .package(url: "https://github.com/Quick/Nimble", from: "7.3.1"), // dev
@@ -29,7 +29,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "RocketLib",
-            dependencies: ["Logger", "ShellOut"]
+            dependencies: ["Logger", "SwiftShell"]
         ),
         .target(
             name: "Rocket",

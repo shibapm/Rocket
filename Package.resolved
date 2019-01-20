@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/Quick/Nimble",
         "state": {
           "branch": null,
-          "revision": "cd6dfb86f496fcd96ce0bc6da962cd936bf41903",
-          "version": "7.3.1"
+          "revision": "df937ffd185b3dd1a44e0c234121cf826b599eb4",
+          "version": "7.3.2"
         }
       },
       {
@@ -60,8 +60,17 @@
         "repositoryURL": "https://github.com/nicklockwood/SwiftFormat.git",
         "state": {
           "branch": null,
-          "revision": "aaed92d1b05a65f6ad385f79ca49e8f1747226ac",
-          "version": "0.37.2"
+          "revision": "b6b91dea9d2accd28872cf32711c51bcaef2b9a5",
+          "version": "0.37.3"
+        }
+      },
+      {
+        "package": "SwiftShell",
+        "repositoryURL": "https://github.com/kareman/SwiftShell",
+        "state": {
+          "branch": null,
+          "revision": "beebe43c986d89ea5359ac3adcb42dac94e5e08a",
+          "version": "4.1.2"
         }
       },
       {

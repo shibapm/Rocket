@@ -1,6 +1,6 @@
 import Foundation
 import Logger
-import ShellOut
+import SwiftShell
 
 protocol ScriptLauncherContainer {
     var scriptLauncher: ScriptLaunching { get }
@@ -11,13 +11,15 @@ extension ScriptLauncherContainer {
         do {
             try scriptLauncher.launchScript(withContent: content, version: version, logger: logger)
         } catch {
-            let shellError = error as! ShellOutError
-            logger.logError(errorMessage, shellError.message)
+            logger.logInfo("")
+
+            if let error = error as? ScriptLauncherError {
+                logger.logError(errorMessage, error.errorString)
+            } else {
+                logger.logError(errorMessage, error.localizedDescription)
+            }
+
             exit(1)
         }
-    }
-
-    func launchScript(command: ShellOutCommand, version: String? = nil, errorMessage: String, logger: Logger) {
-        launchScript(content: command.string, version: version, errorMessage: errorMessage, logger: logger)
     }
 }

@@ -1,7 +1,6 @@
 import Logger
 import Nimble
 @testable import RocketLib
-import ShellOut
 import TestSpy
 import XCTest
 
