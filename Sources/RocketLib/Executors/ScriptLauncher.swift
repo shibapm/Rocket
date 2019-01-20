@@ -1,6 +1,10 @@
 import Foundation
 import Logger
-import ShellOut
+import SwiftShell
+
+struct ScriptLauncherError: Error {
+    let errorString: String
+}
 
 protocol ScriptLaunching {
     func launchScript(withContent content: String, version: String?, logger: Logger) throws
@@ -18,6 +22,9 @@ final class ScriptLauncher: ScriptLaunching {
 
         contents.append(content)
 
-        try shellOut(to: contents)
+        let outputs = contents.map { run(bash: $0) }
+        if let errorString = outputs.lazy.filter({ $0.stderror.count > 0 }).map({ $0.stderror }).first {
+            throw ScriptLauncherError(errorString: errorString)
+        }
     }
 }
