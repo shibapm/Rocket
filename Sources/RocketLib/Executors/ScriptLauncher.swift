@@ -23,7 +23,7 @@ final class ScriptLauncher: ScriptLaunching {
         contents.append(content)
 
         let outputs = contents.map { run(bash: $0) }
-        if let errorString = outputs.lazy.filter({ $0.stderror.count > 0 }).map({ $0.stderror }).first {
+        if let errorString = outputs.lazy.filter({ $0.exitcode != 0 }).map({ $0.stderror }).first {
             throw ScriptLauncherError(errorString: errorString)
         }
     }
