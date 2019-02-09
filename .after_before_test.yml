@@ -1,7 +1,0 @@
----
-before: 
-  - script: 
-      content: echo "Testing Release for $VERSION"
-after:
-  - script: 
-      content: echo "releasing $VERSION"
