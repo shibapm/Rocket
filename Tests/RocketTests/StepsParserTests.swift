@@ -98,7 +98,22 @@ final class StepsParserTests: XCTestCase {
         expect((steps[5] as! UnhideDevDependenciesExecutor).parameters.packagePath) == "Package.swift"
         expect((steps[6] as! GitAddExecutor).parameters.paths) == ["."]
         expect(steps[7]).to(beAKindOf(CommitExecutor.self))
-        expect((steps[8] as! ScriptExecutor).parameters.content) == "Script/after.sh"
+        expect(steps[8]).to(beAKindOf(PushExecutor.self))
+        expect((steps[9] as! ScriptExecutor).parameters.content) == "Script/after.sh"
+    }
+
+    func testItParsesItReturnsTheDefaultParametersIfTheDictionaryIsEmpty() {
+        let dictionary: [String: Any] = [:]
+
+        let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: logger)
+
+        expect((steps[0] as! HideDevDependenciesExecutor).parameters.packagePath) == "Package.swift"
+        expect((steps[1] as! GitAddExecutor).parameters.paths) == ["."]
+        expect(steps[2]).to(beAKindOf(CommitExecutor.self))
+        expect(steps[3]).to(beAKindOf(TagExecutor.self))
+        expect((steps[4] as! UnhideDevDependenciesExecutor).parameters.packagePath) == "Package.swift"
+        expect((steps[5] as! GitAddExecutor).parameters.paths) == ["."]
+        expect(steps[6]).to(beAKindOf(CommitExecutor.self))
     }
 
     func testItParsesCorrectlyWhenOnlyBeforeIsSpecified() {
@@ -111,7 +126,7 @@ final class StepsParserTests: XCTestCase {
         let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: logger)
 
         expect((steps[0] as! ScriptExecutor).parameters.content) == "swiftlint"
-        expect(steps.count) == 8
+        expect(steps.count) == 9
     }
 
     func testItParsesCorrectlyWhenOnlyAfterIsSpecified() {
@@ -123,8 +138,8 @@ final class StepsParserTests: XCTestCase {
 
         let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: logger)
 
-        expect((steps[7] as! ScriptExecutor).parameters.content) == "Script/after.sh"
-        expect(steps.count) == 8
+        expect((steps[8] as! ScriptExecutor).parameters.content) == "Script/after.sh"
+        expect(steps.count) == 9
     }
 }
 

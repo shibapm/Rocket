@@ -28,7 +28,7 @@ if let rocketYamlPath = RocketFileFinder.rocketFilePath() {
 } else if let rocketConfig = getPackageConfig()["rocket"] as? [String: Any] {
     stepsDictionary = rocketConfig
 } else {
-    logger.logError("Steps not found")
+    stepsDictionary = [:]
 }
 
 let stepPrinter = StepDescriptionPrinter()

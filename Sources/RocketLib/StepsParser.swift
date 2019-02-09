@@ -10,6 +10,7 @@ public class StepsParser {
         Step.unhideDependencies.rawValue,
         Step.gitAdd.rawValue,
         [Step.commit.rawValue: ["message": "Unhide dependencies"]],
+        Step.push.rawValue,
     ]
 
     enum CodingKeys: String {
@@ -54,7 +55,7 @@ public class StepsParser {
 
             return beforeSteps + defaultSteps + afterSteps
         } else {
-            return nil
+            return defaultSteps
         }
     }
 

@@ -48,6 +48,18 @@ With PackageConfig (https://github.com/orta/PackageConfig) you can put the confi
     ])
 ```
 
+## Default steps
+If there is no step definition Rocket will run the default steps:
+
+- **hide_dev_dependencies**
+- **git_add**
+- **commit**
+- **tag**
+- **unhide_dev_dependencies**
+- **git_add**
+- **commit** (message: "Unhide dev dependencies")
+- **push** (remote=origin branch=master)
+
 ## Before/After steps
 If you use the `before` and/or `after` keys
 
@@ -63,14 +75,18 @@ after:
       content: echo "released $VERSION"
 ```
 
-Rocket will execute some default steps between the before and after steps:
+Rocket will execute the default steps between the before and after steps
 
 - `echo "Testing Release for $VERSION"`
 
 - **hide_dev_dependencies**
+- **git_add**
 - **commit**
+- **tag**
 - **unhide_dev_dependencies**
+- **git_add**
 - **commit** (message: "Unhide dev dependencies")
+- **push** (remote=origin branch=master)
 
 - `echo "released $VERSION"`
 
