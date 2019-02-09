@@ -101,6 +101,20 @@ final class StepsParserTests: XCTestCase {
         expect((steps[8] as! ScriptExecutor).parameters.content) == "Script/after.sh"
     }
 
+    func testItParsesItReturnsTheDefaultParametersIfTheDictionaryIsEmpty() {
+        let dictionary: [String: Any] = [:]
+
+        let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: logger)
+
+        expect((steps[0] as! HideDevDependenciesExecutor).parameters.packagePath) == "Package.swift"
+        expect((steps[1] as! GitAddExecutor).parameters.paths) == ["."]
+        expect(steps[2]).to(beAKindOf(CommitExecutor.self))
+        expect(steps[3]).to(beAKindOf(TagExecutor.self))
+        expect((steps[4] as! UnhideDevDependenciesExecutor).parameters.packagePath) == "Package.swift"
+        expect((steps[5] as! GitAddExecutor).parameters.paths) == ["."]
+        expect(steps[6]).to(beAKindOf(CommitExecutor.self))
+    }
+
     func testItParsesCorrectlyWhenOnlyBeforeIsSpecified() {
         let dictionary = [
             "before": [
