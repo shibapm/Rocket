@@ -3,22 +3,30 @@ public enum VersionBumpOption: String {
     case minor
     case major
 
-    func newVersion(currentVersion: String) -> String {
-        let componentIndex: Int
-
+    private var index: Int {
         switch self {
         case .major:
-            componentIndex = 0
+            return 0
         case .minor:
-            componentIndex = 1
+            return 1
         case .patch:
-            componentIndex = 2
+            return 2
         }
+    }
 
+    func newVersion(currentVersion: String) -> String {
         var versionComponent = currentVersion.split(separator: ".").map { String($0) }
 
+        let componentIndex = self.index
         let newComponent = Int(versionComponent[componentIndex])?.advanced(by: 1) ?? 0
         versionComponent[componentIndex] = newComponent.description
+
+        if self != .patch {
+            for i in componentIndex + 1 ... VersionBumpOption.patch.index {
+                versionComponent[i] = "0"
+            }
+        }
+
         return versionComponent.joined(separator: ".")
     }
 }
