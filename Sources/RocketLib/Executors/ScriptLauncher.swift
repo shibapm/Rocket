@@ -13,19 +13,20 @@ protocol ScriptLaunching {
 
 struct ScriptLauncher: ScriptLaunching {
     func launchScript(withContent content: String, version: String?) throws -> String {
-        var contents: [String] = []
+        var runnableContent: String
 
         if let version = version {
-            contents.append("export VERSION=\(version)")
+            runnableContent = "export VERSION=\(version) && \(content)"
+        } else {
+            runnableContent = content
         }
 
-        contents.append(content)
+        let output = run(bash: runnableContent)
 
-        let outputs = contents.map { run(bash: $0) }
-        if let errorString = outputs.lazy.filter({ $0.exitcode != 0 }).map({ $0.stderror }).first {
-            throw ScriptLauncherError(errorString: errorString)
+        if output.exitcode != 0 {
+            throw ScriptLauncherError(errorString: output.stdout)
         } else {
-            return outputs.last?.stdout ?? ""
+            return output.stdout
         }
     }
 }
