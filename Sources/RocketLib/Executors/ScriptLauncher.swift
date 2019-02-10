@@ -7,13 +7,12 @@ struct ScriptLauncherError: Error {
 }
 
 protocol ScriptLaunching {
-    func launchScript(withContent content: String, version: String?, logger: Logger) throws
+    @discardableResult
+    func launchScript(withContent content: String, version: String?) throws -> String
 }
 
-final class ScriptLauncher: ScriptLaunching {
-    init() {}
-
-    func launchScript(withContent content: String, version: String?, logger _: Logger) throws {
+struct ScriptLauncher: ScriptLaunching {
+    func launchScript(withContent content: String, version: String?) throws -> String {
         var contents: [String] = []
 
         if let version = version {
@@ -25,6 +24,8 @@ final class ScriptLauncher: ScriptLaunching {
         let outputs = contents.map { run(bash: $0) }
         if let errorString = outputs.lazy.filter({ $0.exitcode != 0 }).map({ $0.stderror }).first {
             throw ScriptLauncherError(errorString: errorString)
+        } else {
+            return outputs.last?.stdout ?? ""
         }
     }
 }

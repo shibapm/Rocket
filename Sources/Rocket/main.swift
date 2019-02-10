@@ -11,7 +11,13 @@ guard CommandLine.arguments.count > 1 else {
     exit(1)
 }
 
-let version = CommandLine.arguments[1]
+let version: String
+
+if let bump = VersionBumpOption(rawValue: CommandLine.arguments[1]) {
+    version = try NewVersionProvider.newVersion(bump)
+} else {
+    version = CommandLine.arguments[1]
+}
 
 var stepsDictionary: [String: Any]!
 
