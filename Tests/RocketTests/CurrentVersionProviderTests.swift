@@ -25,7 +25,7 @@ final class CurrentVersionProviderTests: XCTestCase {
         XCTAssertEqual(try currentVersionProvider.currentVersion(), "1.0.0")
     }
 
-    func testItThrowsAnErrorIfThereAreNoTags() {
+    func testItReturnsTheCorrectVersionIfThereAreNoTags() {
         let tags = """
         tag1
         tag2
@@ -33,6 +33,6 @@ final class CurrentVersionProviderTests: XCTestCase {
 
         scriptLaucher.result = tags
 
-        XCTAssertThrowsError(try currentVersionProvider.currentVersion())
+        XCTAssertEqual(try currentVersionProvider.currentVersion(), "0.0.0")
     }
 }

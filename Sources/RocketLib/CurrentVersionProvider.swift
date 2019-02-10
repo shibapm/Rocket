@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CurrentVersionProviding {
+public protocol CurrentVersionProviding {
     func currentVersion() throws -> String
 }
 
@@ -23,7 +23,7 @@ struct CurrentVersionProvider: CurrentVersionProviding {
         if let version = tags.filter({ regex.firstMatch(in: $0, options: .anchored, range: NSRange(location: 0, length: $0.count)) != nil }).first {
             return version
         } else {
-            throw Errors.versionNotFound
+            return "0.0.0"
         }
     }
 }
