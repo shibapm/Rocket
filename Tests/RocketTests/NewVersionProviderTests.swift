@@ -6,12 +6,12 @@ final class NewVersionProviderTests: XCTestCase {
         let versionProvider = FakeCurrentVersionProvider()
         XCTAssertEqual(
             try NewVersionProvider.newVersion(.patch, currentVersionProvider: versionProvider),
-            "1.0.1"
+            "1.1.2"
         )
 
         XCTAssertEqual(
             try NewVersionProvider.newVersion(.minor, currentVersionProvider: versionProvider),
-            "1.1.0"
+            "1.2.0"
         )
 
         XCTAssertEqual(
@@ -23,6 +23,6 @@ final class NewVersionProviderTests: XCTestCase {
 
 private class FakeCurrentVersionProvider: CurrentVersionProviding {
     func currentVersion() throws -> String {
-        return "1.0.0"
+        return "1.1.1"
     }
 }
