@@ -8,8 +8,10 @@ final class SpyScriptLauncher: ScriptLaunching, TestSpy {
     }
 
     var callstack = CallstackContainer<Method>()
+    var result = ""
 
-    func launchScript(withContent content: String, version: String?, logger _: Logger) throws {
+    func launchScript(withContent content: String, version: String?) throws -> String {
         callstack.record(.launchScript(content: content, version: version))
+        return result
     }
 }
