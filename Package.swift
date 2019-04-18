@@ -49,5 +49,5 @@ let package = Package(
                 "git add .",
             ],
         ],
-    ])
+    ]).write()
 #endif
