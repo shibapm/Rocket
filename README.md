@@ -35,7 +35,7 @@ With PackageConfig (https://github.com/orta/PackageConfig) you can put the confi
 #if canImport(PackageConfig)
     import PackageConfig
     
-    let config = PackageConfig([
+    let config = PackageConfiguration([
         "rocket": ["steps":
             [
                 ["script": ["content": "ruby Scripts/update_changelog.rb"]]
@@ -45,7 +45,7 @@ With PackageConfig (https://github.com/orta/PackageConfig) you can put the confi
                 "push"
             ]
         ]
-    ])
+    ]).write()
 ```
 
 ## Default steps
