@@ -16,7 +16,7 @@ struct CurrentVersionProvider: CurrentVersionProviding {
     }
 
     func currentVersion() throws -> String {
-        let tags = try scriptLauncher.launchScript(withContent: "git tag --sort=-v:refname", version: nil).split(separator: "\n").lazy.map({ String($0) })
+        let tags = try scriptLauncher.launchScript(withContent: "git tag --sort=-v:refname", version: nil).split(separator: "\n").lazy.map { String($0) }
 
         let regex = try NSRegularExpression(pattern: "\\d.\\d.\\d", options: .caseInsensitive)
 
