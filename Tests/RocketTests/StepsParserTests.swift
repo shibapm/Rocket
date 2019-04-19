@@ -27,7 +27,7 @@ final class StepsParserTests: XCTestCase {
                 ["push": ["remote": "testRemote", "branch": "testBranch"]],
                 ["hide_dev_dependencies": ["package_path": "testPackage.swift"]],
                 "unhide_dev_dependencies",
-        ]]
+            ]]
 
         let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: logger)
 
@@ -49,7 +49,7 @@ final class StepsParserTests: XCTestCase {
                 [],
                 ["commit": ["message": "message"]],
                 "push",
-        ]]
+            ]]
 
         let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: logger)
 
@@ -67,7 +67,7 @@ final class StepsParserTests: XCTestCase {
                 "Scripts/script",
                 ["commit": ["message": "message"]],
                 "push",
-        ]]
+            ]]
 
         let steps = StepsParser.parseSteps(fromDictionary: dictionary, logger: logger)
 
