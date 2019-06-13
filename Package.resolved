@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "Komondor",
-        "repositoryURL": "https://github.com/orta/Komondor.git",
+        "repositoryURL": "https://github.com/shibapm/Komondor.git",
         "state": {
           "branch": null,
           "revision": "3cd6d76887816ead5931ddbfb249c2935f518e17",
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/f-meloni/Logger",
         "state": {
           "branch": null,
-          "revision": "c1cb5a142b99687ecc55d8de101bf082889f5fd1",
-          "version": "0.2.2"
+          "revision": "53c3ecca5abe8cf46697e33901ee774236d94cce",
+          "version": "0.2.3"
         }
       },
       {
@@ -30,7 +30,7 @@
       },
       {
         "package": "PackageConfig",
-        "repositoryURL": "https://github.com/orta/PackageConfig.git",
+        "repositoryURL": "https://github.com/shibapm/PackageConfig.git",
         "state": {
           "branch": null,
           "revision": "912c12f0eb33577124e7bf16e51830ae0af49962",
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/nicklockwood/SwiftFormat.git",
         "state": {
           "branch": null,
-          "revision": "8b3e855384f15847915fa3a02019185ee7515107",
-          "version": "0.40.8"
+          "revision": "ef65f79ccdc80216624bd2f609cb037a098ca1bb",
+          "version": "0.40.9"
         }
       },
       {
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/jpsim/Yams",
         "state": {
           "branch": null,
-          "revision": "b08dba4bcea978bf1ad37703a384097d3efce5af",
-          "version": "1.0.2"
+          "revision": "c947a306d2e80ecb2c0859047b35c73b8e1ca27f",
+          "version": "2.0.0"
         }
       }
     ]
