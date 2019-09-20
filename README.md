@@ -2,14 +2,14 @@
 
 Swift CLI release tool for Git repos and Swift Packages
 
-## Installation
+## Install Rocket
 You can install Rocket with SPM
 
 1. Add or amend a Package.swift
 2. Add this dependency `.package(url: "https://github.com/f-meloni/Rocket", from: "0.1.0")`
 3. Then you can run `swift run rocket 1.0.0` where `1.0.0` is the version that you want to release
 
-## Setup the release steps
+## Set up the release steps
 
 #### With YAML
 Create a file called `.rocket.yml` with your steps inside
