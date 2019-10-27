@@ -1,7 +1,13 @@
 import Foundation
 import Logger
 
-public class StepsParser {
+public enum StepsParser {
+    enum CodingKeys: String {
+        case steps
+        case before
+        case after
+    }
+
     private static let defaultSteps: [Any] = [
         Step.hideDependencies.rawValue,
         Step.gitAdd.rawValue,
@@ -12,12 +18,6 @@ public class StepsParser {
         [Step.commit.rawValue: ["message": "Unhide dependencies"]],
         Step.push.rawValue,
     ]
-
-    enum CodingKeys: String {
-        case steps
-        case before
-        case after
-    }
 
     public static func parseSteps(fromDictionary dictionary: [String: Any], logger: Logger) -> [StepExecutor] {
         guard let stepsArray = steps(fromDictionary: dictionary) else {

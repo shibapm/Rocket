@@ -11,6 +11,13 @@ protocol ScriptLaunching {
     func launchScript(withContent content: String, version: String?) throws -> String
 }
 
+extension ScriptLaunching {
+    @discardableResult
+    func launchScript(withContent content: String) throws -> String {
+        return try launchScript(withContent: content, version: nil)
+    }
+}
+
 struct ScriptLauncher: ScriptLaunching {
     func launchScript(withContent content: String, version: String?) throws -> String {
         var runnableContent: String
