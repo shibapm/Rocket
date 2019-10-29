@@ -1,7 +1,7 @@
 import Logger
 
-enum ChecksParser {
-    enum CodingKeys: String {
+public enum ChecksParser {
+    private enum CodingKeys: String {
         case preReleaseChecks = "pre_release_checks"
     }
 

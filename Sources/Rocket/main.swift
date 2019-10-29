@@ -19,7 +19,7 @@ if let bump = VersionBumpOption(rawValue: CommandLine.arguments[1]) {
     version = CommandLine.arguments[1]
 }
 
-var stepsDictionary: [String: Any]!
+var dictionary: [String: Any]!
 
 let startingTime = Date()
 
@@ -30,16 +30,24 @@ if let rocketYamlPath = RocketFileFinder.rocketFilePath() {
         exit(1)
     }
 
-    stepsDictionary = loadedDictionary
+    dictionary = loadedDictionary
 } else if let packageConfig = try? PackageConfiguration.load().configuration,
     let rocketConfig = packageConfig["rocket"] as? [String: Any] {
-    stepsDictionary = rocketConfig
+    dictionary = rocketConfig
 } else {
-    stepsDictionary = [:]
+    dictionary = [:]
+}
+
+let checks = ChecksParser.parsePreReleaseChecks(fromDictionary: dictionary)
+let failedChecks = checks.filter { !$0.check() }
+
+guard failedChecks.count == 0 else {
+    logger.logError("Pre release checks failed")
+    exit(1)
 }
 
 let stepPrinter = StepDescriptionPrinter()
-let stepExecutors = StepsParser.parseSteps(fromDictionary: stepsDictionary, logger: logger)
+let stepExecutors = StepsParser.parseSteps(fromDictionary: dictionary, logger: logger)
 stepExecutors.forEach {
     $0.printStartStepDescription(logger: logger)
     $0.executeStep(version: version, logger: logger)
