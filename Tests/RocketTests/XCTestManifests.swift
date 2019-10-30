@@ -151,7 +151,6 @@ extension UnhideDevDependenciesExecutorTests {
             testCase(PushExecutorTests.__allTests),
             testCase(RocketFileFinderTests.__allTests),
             testCase(ScriptExecutorTests.__allTests),
-            testCase(ScriptLauncherTestCase.__allTests),
             testCase(StepsParserTests.__allTests),
             testCase(SwiftScriptExecutorTests.__allTests),
             testCase(TagExecutorTests.__allTests),
