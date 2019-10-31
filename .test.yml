@@ -1,8 +1,10 @@
 ---
-steps: 
-  - script: 
+pre_release_checks:
+  - clean_git
+steps:
+  - script:
       content: echo "Testing Release for $VERSION"
-  - script: 
+  - script:
       content: echo "releasing $VERSION"
   - hide_dev_dependencies
   - git_add:
