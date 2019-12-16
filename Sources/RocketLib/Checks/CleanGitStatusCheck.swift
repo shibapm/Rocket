@@ -2,6 +2,10 @@ import Foundation
 
 struct CleanGitStatusCheck: Check {
     let launcher: ScriptLaunching
+    
+    var errorMessage: String {
+        return "Your git status contains not committed code, please remove it or commit it"
+    }
 
     init() {
         self.init(launcher: ScriptLauncher())
