@@ -12,7 +12,7 @@
       },
       {
         "package": "Logger",
-        "repositoryURL": "https://github.com/f-meloni/Logger",
+        "repositoryURL": "https://github.com/shibapm/Logger",
         "state": {
           "branch": null,
           "revision": "53c3ecca5abe8cf46697e33901ee774236d94cce",
