@@ -5,7 +5,8 @@ matrix:
       osx_image: xcode10.2
       script:
         - swift test
-        - ./.build/x86_64-apple-macosx10.10/debug/rocket 1.0.0 --rocket-file .test.yml
+        - swift build --disable-sandbox -c release
+        - ./.build/x86_64-apple-macosx10.10/release/rocket 1.0.0 --rocket-file .test.yml
 
     - os: linux
       language: generic
@@ -13,7 +14,8 @@ matrix:
       dist: trusty
       install:
         - eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
-        - swiftenv global 5.1
+        - swiftenv global 5.0
       script:
         - swift test
-        - ./.build/x86_64-unknown-linux/debug/rocket 1.0.0 --rocket-file .test.yml
+        - swift build --disable-sandbox -c release
+        - ./.build/x86_64-unknown-linux/release/rocket 1.0.0 --rocket-file .test.yml
