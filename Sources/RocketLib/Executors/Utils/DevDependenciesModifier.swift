@@ -46,15 +46,7 @@ struct DevDependenciesModifier: DevDependenciesModifing {
     }
 
     private func unhideDependencyOnLine(_ line: String) -> String {
-        let devDependencyStartIndex: String.Index
-        
-        #if swift(>=5.0)
-        devDependencyStartIndex = String.Index(utf16Offset: 2, in: line)
-        #else
-        devDependencyStartIndex = String.Index(encodedOffset: 2)
-        #endif
-        
-        return String(line[devDependencyStartIndex ..< line.endIndex])
+        return String(line[String.Index(utf16Offset: 2, in: line) ..< line.endIndex])
     }
 
     private func isDevDependencyLine(line: String) -> Bool {
