@@ -6,7 +6,7 @@ matrix:
       script:
         - swift test
         - swift build --disable-sandbox -c release
-        - ./.build/x86_64-apple-macosx10.10/release/rocket 1.0.0 --rocket-file .test.yml
+        - ./.build/release/rocket 1.0.0 --rocket-file .test.yml
 
     - os: linux
       language: generic
@@ -18,4 +18,4 @@ matrix:
       script:
         - swift test
         - swift build --disable-sandbox -c release
-        - ./.build/x86_64-unknown-linux/release/rocket 1.0.0 --rocket-file .test.yml
+        - ./.build/release/rocket 1.0.0 --rocket-file .test.yml
