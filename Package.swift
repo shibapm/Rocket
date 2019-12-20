@@ -1,4 +1,4 @@
-// swift-tools-version:4.2
+// swift-tools-version:5.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -16,10 +16,10 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/jpsim/Yams", from: "2.0.0"),
         .package(url: "https://github.com/shibapm/Logger", from: "0.2.2"),
-        .package(url: "https://github.com/kareman/SwiftShell", from: "4.1.0"),
+        .package(url: "https://github.com/kareman/SwiftShell", from: "5.0.0"),
         .package(url: "https://github.com/shibapm/PackageConfig.git", from: "0.10.0"),
         // Dev Dependencies for testing.setup
-        .package(url: "https://github.com/Quick/Nimble", from: "7.3.1"), // dev
+        .package(url: "https://github.com/Quick/Nimble", from: "8.0.0"), // dev
         .package(url: "https://github.com/f-meloni/TestSpy", from: "0.3.1"), // dev
         .package(url: "https://github.com/shibapm/Komondor.git", from: "1.0.0"), // dev
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"), // dev
