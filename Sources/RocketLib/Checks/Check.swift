@@ -1,7 +1,10 @@
 public protocol Check {
     init()
-    
-    var errorMessage: String { get }
-    
-    func check() -> Bool
+
+    func check() -> CheckResult
+}
+
+public enum CheckResult: Equatable {
+    case success
+    case failure(String)
 }

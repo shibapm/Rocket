@@ -1,11 +1,9 @@
 import Foundation
 
 struct CleanGitStatusCheck: Check {
+    private static let errorMessage: String = "Your git status contains not committed code, please remove it or commit it"
+
     let launcher: ScriptLaunching
-    
-    var errorMessage: String {
-        return "Your git status contains not committed code, please remove it or commit it"
-    }
 
     init() {
         self.init(launcher: ScriptLauncher())
@@ -15,9 +13,9 @@ struct CleanGitStatusCheck: Check {
         self.launcher = launcher
     }
 
-    func check() -> Bool {
+    func check() -> CheckResult {
         let result = try? launcher.launchScript(withContent: "git diff --name-only", version: nil)
 
-        return result?.isEmpty ?? true
+        return result?.isEmpty == true ? .success : .failure(CleanGitStatusCheck.errorMessage)
     }
 }
