@@ -39,11 +39,18 @@ if let rocketYamlPath = RocketFileFinder.rocketFilePath() {
 }
 
 let checks = ChecksParser.parsePreReleaseChecks(fromDictionary: dictionary)
-let failedChecks = checks.filter { !$0.check() }
+let failedChecks = checks.compactMap { check -> String? in
+    switch check.check() {
+    case .success:
+        return nil
+    case let .failure(error):
+        return error
+    }
+}
 
 guard failedChecks.isEmpty else {
     logger.logError("Pre release checks failed",
-                    failedChecks.map { $0.errorMessage }.joined(separator: "\n"),
+                    failedChecks.joined(separator: "\n"),
                     separator: "\n")
     exit(1)
 }
