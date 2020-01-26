@@ -2,14 +2,12 @@ import Foundation
 
 protocol NoVerifyParameterInserting {
     var fileManager: FileManager { get }
-    func insertNoVerifyParameterIfNeeded(string: inout String, noVerifyParameter: Bool?)
+    func insertNoVerifyParameterIfNeeded(string: String, noVerifyParameter: Bool?) -> String
 }
 
 extension NoVerifyParameterInserting {
-    func insertNoVerifyParameterIfNeeded(string: inout String, noVerifyParameter: Bool?) {
-        if shouldAddNoVerifyParameter(noVerifyParameter: noVerifyParameter) {
-            string += " --no-verify"
-        }
+    func insertNoVerifyParameterIfNeeded(string: String, noVerifyParameter: Bool?) -> String {
+        return shouldAddNoVerifyParameter(noVerifyParameter: noVerifyParameter) ? string + " --no-verify" : string
     }
 
     private func shouldAddNoVerifyParameter(noVerifyParameter: Bool?) -> Bool {
