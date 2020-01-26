@@ -11,7 +11,7 @@ struct PushParameters: StepParameters {
 
     init(dictionary: [String: Any]?) {
         remote = dictionary?[CodingKeys.remote] ?? "origin"
-        branch = dictionary?[CodingKeys.branch] ?? "master"
+        branch = dictionary?[CodingKeys.branch] ?? "HEAD"
         noVerify = dictionary?[CodingKeys.noVerify]
     }
 }
