@@ -197,7 +197,7 @@
     }
 
     public func __allTests() -> [XCTestCaseEntry] {
-        return [
+        [
             testCase(BranchExecutorTests.__allTests__BranchExecutorTests),
             testCase(ChecksParserTests.__allTests__ChecksParserTests),
             testCase(CleanGitStatusCheckTests.__allTests__CleanGitStatusCheckTests),

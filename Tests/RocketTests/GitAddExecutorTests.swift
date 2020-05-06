@@ -19,7 +19,7 @@ final class GitAddExecutorTests: ScriptLauncherTestCase {
     }
 
     private func givenAGitAddExecutor(dictionary: [String: Any]?) -> GitAddExecutor {
-        return GitAddExecutor(step: .gitAdd, dictionary: dictionary, scriptLauncher: scriptLauncher)
+        GitAddExecutor(step: .gitAdd, dictionary: dictionary, scriptLauncher: scriptLauncher)
     }
 
     private func executeStep(withDictionary dictionary: [String: Any]?) {

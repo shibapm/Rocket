@@ -23,6 +23,6 @@ final class NewVersionProviderTests: XCTestCase {
 
 private class FakeCurrentVersionProvider: CurrentVersionProviding {
     func currentVersion() throws -> String {
-        return "1.1.1"
+        "1.1.1"
     }
 }

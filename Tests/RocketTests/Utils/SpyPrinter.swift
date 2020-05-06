@@ -10,6 +10,6 @@ final class SpyPrinter: Printing {
 
 extension Logger {
     static var testLogger: Logger {
-        return Logger(printer: SpyPrinter())
+        Logger(printer: SpyPrinter())
     }
 }

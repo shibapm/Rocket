@@ -36,7 +36,7 @@ final class DevDependenciesModifierTests: XCTestCase {
     }
 
     private var devDependencyPackage: String {
-        return """
+        """
         // swift-tools-version:4.2
         import PackageDescription
 
@@ -70,7 +70,7 @@ final class DevDependenciesModifierTests: XCTestCase {
     }
 
     private var hiddenDevDependencyPackage: String {
-        return """
+        """
         // swift-tools-version:4.2
         import PackageDescription
 

@@ -42,14 +42,14 @@ struct DevDependenciesModifier: DevDependenciesModifing {
     }
 
     private func hideDependencyOnLine(_ line: String) -> String {
-        return commentString + line
+        commentString + line
     }
 
     private func unhideDependencyOnLine(_ line: String) -> String {
-        return String(line[String.Index(utf16Offset: 2, in: line) ..< line.endIndex])
+        String(line[String.Index(utf16Offset: 2, in: line) ..< line.endIndex])
     }
 
     private func isDevDependencyLine(line: String) -> Bool {
-        return line.contains("// dev") || line.contains("//dev")
+        line.contains("// dev") || line.contains("//dev")
     }
 }

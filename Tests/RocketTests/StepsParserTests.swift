@@ -145,7 +145,7 @@ final class StepsParserTests: XCTestCase {
 
 extension PushParameters: Equatable {
     public static func == (lhs: PushParameters, rhs: PushParameters) -> Bool {
-        return lhs.branch == rhs.branch &&
+        lhs.branch == rhs.branch &&
             lhs.remote == rhs.remote
     }
 }
