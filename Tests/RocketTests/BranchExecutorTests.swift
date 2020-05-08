@@ -19,7 +19,7 @@ final class BranchExecutorTests: ScriptLauncherTestCase {
     }
 
     private func givenABranchExecutor(dictionary: [String: Any]?) -> BranchExecutor {
-        return BranchExecutor(step: .branch, dictionary: dictionary, scriptLauncher: scriptLauncher)
+        BranchExecutor(step: .branch, dictionary: dictionary, scriptLauncher: scriptLauncher)
     }
 
     private func executeStep(withDictionary dictionary: [String: Any]?) {

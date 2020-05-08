@@ -10,7 +10,7 @@ public enum Step: String {
     case swiftScript = "swift_script"
 
     func executor(dictionary: [String: Any]?) -> StepExecutor {
-        return executorType.init(step: self, dictionary: dictionary)
+        executorType.init(step: self, dictionary: dictionary)
     }
 
     private var executorType: StepExecutor.Type {

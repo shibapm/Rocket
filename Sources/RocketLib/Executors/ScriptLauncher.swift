@@ -14,7 +14,7 @@ protocol ScriptLaunching {
 extension ScriptLaunching {
     @discardableResult
     func launchScript(withContent content: String) throws -> String {
-        return try launchScript(withContent: content, version: nil)
+        try launchScript(withContent: content, version: nil)
     }
 }
 

@@ -7,7 +7,7 @@ protocol NoVerifyParameterInserting {
 
 extension NoVerifyParameterInserting {
     func insertNoVerifyParameterIfNeeded(string: String, noVerifyParameter: Bool?) -> String {
-        return shouldAddNoVerifyParameter(noVerifyParameter: noVerifyParameter) ? string + " --no-verify" : string
+        shouldAddNoVerifyParameter(noVerifyParameter: noVerifyParameter) ? string + " --no-verify" : string
     }
 
     private func shouldAddNoVerifyParameter(noVerifyParameter: Bool?) -> Bool {
