@@ -7,6 +7,20 @@ matrix:
         - swift test
         - swift build --disable-sandbox -c release
         - ./.build/release/rocket 1.0.0 --rocket-file .test.yml
+    
+    - os: osx
+      osx_image: xcode12
+      script:
+        - swift test
+        - swift build --disable-sandbox -c release
+        - ./.build/release/rocket 1.0.0 --rocket-file .test.yml
+
+    - os: osx
+      osx_image: xcode12u
+      script:
+        - swift test
+        - swift build --disable-sandbox -c release
+        - ./.build/release/rocket 1.0.0 --rocket-file .test.yml
 
     - os: linux
       language: generic
