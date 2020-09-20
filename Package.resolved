@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/kareman/SwiftShell",
         "state": {
           "branch": null,
-          "revision": "fb7fc2c9ad8811caf324431a508fb79e3fb74f99",
-          "version": "5.0.1"
+          "revision": "a6014fe94c3dbff0ad500e8da4f251a5d336530b",
+          "version": "5.1.0-beta.1"
         }
       },
       {

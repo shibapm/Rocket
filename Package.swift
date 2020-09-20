@@ -16,7 +16,7 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/jpsim/Yams", from: "2.0.0"),
         .package(url: "https://github.com/shibapm/Logger", from: "0.2.2"),
-        .package(url: "https://github.com/kareman/SwiftShell", from: "5.0.0"),
+        .package(url: "https://github.com/kareman/SwiftShell", .exact("5.1.0-beta.1")),
         .package(url: "https://github.com/shibapm/PackageConfig.git", from: "0.10.0"),
         // Dev Dependencies for testing.setup
         .package(url: "https://github.com/Quick/Nimble", from: "8.0.0"), // dev
