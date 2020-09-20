@@ -19,10 +19,10 @@ let package = Package(
         .package(url: "https://github.com/kareman/SwiftShell", .exact("5.1.0-beta.1")),
         .package(url: "https://github.com/shibapm/PackageConfig.git", from: "0.10.0"),
         // Dev Dependencies for testing.setup
-        .package(url: "https://github.com/Quick/Nimble", from: "8.0.0"), // dev
-        .package(url: "https://github.com/f-meloni/TestSpy", from: "0.3.1"), // dev
-        .package(url: "https://github.com/shibapm/Komondor.git", from: "1.0.0"), // dev
-        .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"), // dev
+//        .package(url: "https://github.com/Quick/Nimble", from: "8.0.0"), // dev
+//        .package(url: "https://github.com/f-meloni/TestSpy", from: "0.3.1"), // dev
+//        .package(url: "https://github.com/shibapm/Komondor.git", from: "1.0.0"), // dev
+//        .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"), // dev
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -35,7 +35,7 @@ let package = Package(
             name: "Rocket",
             dependencies: ["Yams", "Logger", "PackageConfig", "RocketLib"]
         ),
-        .testTarget(name: "RocketTests", dependencies: ["RocketLib", "Nimble", "TestSpy"]), // dev
+//        .testTarget(name: "RocketTests", dependencies: ["RocketLib", "Nimble", "TestSpy"]), // dev
     ]
 )
 
