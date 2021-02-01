@@ -29,7 +29,7 @@ steps:
 ```
 
 #### With PackageConfig
-With PackageConfig (https://github.com/orta/PackageConfig) you can put the configuration at the end of your `Package.swift`
+With [PackageConfig](https://github.com/shibapm/PackageConfig) you can put the configuration at the end of your `Package.swift`
 
 ```swift
 #if canImport(PackageConfig)
