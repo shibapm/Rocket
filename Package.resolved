@@ -20,15 +20,6 @@
         }
       },
       {
-        "package": "Komondor",
-        "repositoryURL": "https://github.com/shibapm/Komondor.git",
-        "state": {
-          "branch": null,
-          "revision": "3cd6d76887816ead5931ddbfb249c2935f518e17",
-          "version": "1.0.4"
-        }
-      },
-      {
         "package": "Logger",
         "repositoryURL": "https://github.com/shibapm/Logger",
         "state": {
@@ -51,8 +42,8 @@
         "repositoryURL": "https://github.com/shibapm/PackageConfig.git",
         "state": {
           "branch": null,
-          "revision": "fd0829aac9851434b3d2db0890e27bc489fc973a",
-          "version": "0.12.2"
+          "revision": "6e7b59d8d2ab62c1725d205dd2074316e981379a",
+          "version": "1.0.0"
         }
       },
       {
@@ -62,15 +53,6 @@
           "branch": null,
           "revision": "33682c2f6230c60614861dfc61df267e11a1602f",
           "version": "2.2.0"
-        }
-      },
-      {
-        "package": "ShellOut",
-        "repositoryURL": "https://github.com/JohnSundell/ShellOut.git",
-        "state": {
-          "branch": null,
-          "revision": "4ebf25863deb9c3c02696704fc3d39736183f258",
-          "version": "2.2.1"
         }
       },
       {
