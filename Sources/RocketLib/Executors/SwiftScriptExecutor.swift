@@ -11,20 +11,19 @@ final class SwiftScriptExecutor: DefaultExecutor<SwiftScriptParameters> {
             return
         }
 
-        let supportedSwiftCPaths = ["/usr/bin/swiftc", "/home/travis/.swiftenv/shims/swiftc"]
+        let supportedSwiftPaths = ["/usr/bin/swift", "/home/travis/.swiftenv/shims/swift"]
 
-        let swiftCPath = supportedSwiftCPaths.first { fileManager.fileExists(atPath: $0) }
-        let swiftC = swiftCPath ?? "swiftc"
+        let swiftPath = supportedSwiftPaths.first { fileManager.fileExists(atPath: $0) }
+        let swift = swiftPath ?? "swift"
         let args = [
-            "--driver-mode=swift",
             scriptPath,
             version,
         ] + parameters.arguments
 
-        logger.logInfo("Running: \(swiftC) \(args.joined(separator: " "))")
+        logger.logInfo("Running: \(swift) \(args.joined(separator: " "))")
 
         let process = Process()
-        process.launchPath = swiftC
+        process.launchPath = swift
         process.arguments = args
 
         let standardOutput = FileHandle.standardOutput

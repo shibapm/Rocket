@@ -15,9 +15,8 @@ final class SwiftScriptExecutorTests: XCTestCase {
 
         executor.executeStep(version: "1.0.0", logger: Logger.testLogger)
 
-        expect(processLauncher.receivedProcess?.launchPath) == "/usr/bin/swiftc"
+        expect(processLauncher.receivedProcess?.launchPath) == "/usr/bin/swift"
         expect(processLauncher.receivedProcess?.arguments) == [
-            "--driver-mode=swift",
             testPath,
             "1.0.0",
         ]
