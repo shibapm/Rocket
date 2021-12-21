@@ -38,7 +38,8 @@ public enum StepsParser {
                 return Step.script.executor(dictionary: [ScriptParameters.CodingKeys.content.rawValue: string])
             }
         } else if let stepDict = element as? [String: Any],
-            let step = step(fromDictionary: stepDict) {
+                  let step = step(fromDictionary: stepDict)
+        {
             return step.executor(dictionary: stepDict[step.rawValue] as? [String: Any])
         } else {
             logger.logWarning("Invalid step found")
@@ -61,7 +62,8 @@ public enum StepsParser {
 
     private static func step(fromDictionary dictionary: [String: Any]) -> Step? {
         guard let stepString = dictionary.keys.first,
-            dictionary.keys.count == 1 else {
+              dictionary.keys.count == 1
+        else {
             return nil
         }
 

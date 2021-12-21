@@ -16,12 +16,12 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/jpsim/Yams", from: "4.0.0"),
         .package(url: "https://github.com/shibapm/Logger", from: "0.2.2"),
-        .package(url: "https://github.com/kareman/SwiftShell", .exact("5.1.0-beta.1")),
+        .package(url: "https://github.com/kareman/SwiftShell", from: "5.1.0"),
         .package(url: "https://github.com/shibapm/PackageConfig.git", from: "1.0.0"),
         // Dev Dependencies for testing.setup
         .package(url: "https://github.com/Quick/Nimble", from: "8.0.0"), // dev
         .package(url: "https://github.com/f-meloni/TestSpy", from: "0.3.1"), // dev
-        // .package(url: "https://github.com/shibapm/Komondor.git", from: "1.0.0"), // dev
+        .package(url: "https://github.com/shibapm/Komondor.git", from: "1.0.0"), // dev
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"), // dev
     ],
     targets: [
