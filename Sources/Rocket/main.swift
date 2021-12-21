@@ -32,7 +32,8 @@ if let rocketYamlPath = RocketFileFinder.rocketFilePath() {
 
     dictionary = loadedDictionary
 } else if let packageConfig = try? PackageConfiguration.load().configuration,
-    let rocketConfig = packageConfig["rocket"] as? [String: Any] {
+          let rocketConfig = packageConfig["rocket"] as? [String: Any]
+{
     dictionary = rocketConfig
 } else {
     dictionary = [:]

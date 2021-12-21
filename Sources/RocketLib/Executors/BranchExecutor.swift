@@ -4,7 +4,8 @@ import Logger
 final class BranchExecutor: ScriptLauncherExecutor<BranchParameters> {
     override func executeStep(version: String, logger: Logger) {
         guard let branchName = parameters.name,
-            !branchName.isEmpty else {
+              !branchName.isEmpty
+        else {
             logger.logError("Invalid branch name")
             return
         }

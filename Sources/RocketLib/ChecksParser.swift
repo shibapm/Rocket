@@ -12,7 +12,8 @@ public enum ChecksParser {
 
     private static func parseElement(_ element: Any) -> Check? {
         if let string = element as? String,
-            let check = PreReleseCheck(rawValue: string) {
+           let check = PreReleseCheck(rawValue: string)
+        {
             return check.check(dictionary: nil)
         } else {
             return nil

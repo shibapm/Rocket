@@ -17,7 +17,7 @@ public enum VersionBumpOption: String {
     func newVersion(currentVersion: String) -> String {
         var versionComponent = currentVersion.split(separator: ".").map { String($0) }
 
-        let componentIndex = self.index
+        let componentIndex = index
         let newComponent = Int(versionComponent[componentIndex])?.advanced(by: 1) ?? 0
         versionComponent[componentIndex] = newComponent.description
 
