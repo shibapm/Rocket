@@ -1,0 +1,27 @@
+name: Swift
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        xcode: ["12.4", "12.5.1", "13.0"]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Select Xcode
+      run: |
+        xcodebuild -version
+        ls -nt /Applications/ | grep "Xcode*"
+        sudo xcode-select -switch /Applications/Xcode_${{ matrix.xcode }}.app
+        xcodebuild -version
+    - name: Run tests
+      run: swift test
+    - name: Build
+      run: swift build --disable-sandbox -c release
+    - name: Create test release
+      run: ./.build/release/rocket 1.0.0 --rocket-file .test.yml
