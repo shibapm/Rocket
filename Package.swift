@@ -31,7 +31,7 @@ let package = Package(
             name: "RocketLib",
             dependencies: ["Logger", "SwiftShell"]
         ),
-        .target(
+        .executableTarget(
             name: "Rocket",
             dependencies: ["Yams", "Logger", "PackageConfig", "RocketLib"]
         ),
