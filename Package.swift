@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.4
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -14,7 +14,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/jpsim/Yams", from: "4.0.0"),
+        .package(url: "https://github.com/jpsim/Yams", from: "5.0.0"),
         .package(url: "https://github.com/shibapm/Logger", from: "0.2.2"),
         .package(url: "https://github.com/kareman/SwiftShell", from: "5.1.0"),
         .package(url: "https://github.com/shibapm/PackageConfig.git", from: "1.0.0"),
@@ -31,7 +31,7 @@ let package = Package(
             name: "RocketLib",
             dependencies: ["Logger", "SwiftShell"]
         ),
-        .target(
+        .executableTarget(
             name: "Rocket",
             dependencies: ["Yams", "Logger", "PackageConfig", "RocketLib"]
         ),
